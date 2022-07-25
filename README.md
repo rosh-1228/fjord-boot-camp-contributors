@@ -1,2 +1,5 @@
 # fjord-boot-camp-contributors
 フィヨルドブートキャンプアプリのコミットランキング
+## エレベーターピッチ
+FjordBootCampContributorsというサービスは、GitHubでは誰がどれくらいFjordBootCampAppにPRを送ってマージされているかをランキング形式では見れない問題を解決したいFjordBootCampの開発者向けの、コントリビュートランキングサイトです。
+ユーザーはコントリビューターのコントリビュート数のランキングを見るができ、GitHubとは違って、指定した期間内のランキングも見れる機能が備わっている事が特徴です。
