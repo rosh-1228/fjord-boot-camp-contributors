@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  avatar_url: MyString
+  first_committed_on: 2022-09-19
+  rank: 1
+
+two:
+  name: MyString
+  avatar_url: MyString
+  first_committed_on: 2022-09-19
+  rank: 1

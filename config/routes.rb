@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :commits
+  root to: "contributors#index"
+  resources :contributors, only: 'index', param: :name do
+    resources :commits, only: 'index'
+    collection do
+      get 'search'
+    end
+  end
+  get 'contributors/:period', to: 'contributors#index', as: 'contributors_in_period'
 end
