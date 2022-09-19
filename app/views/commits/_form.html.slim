@@ -1,0 +1,21 @@
+= form_for @commit do |f|
+  - if @commit.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@commit.errors.count, "error")} prohibited this commit from being saved:"
+      ul
+        - @commit.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :contributor
+    = f.text_field :contributor
+  .field
+    = f.label :hash
+    = f.text_area :hash
+  .field
+    = f.label :committed_on
+    = f.date_select :committed_on
+  .field
+    = f.label :message
+    = f.text_area :message
+  .actions = f.submit

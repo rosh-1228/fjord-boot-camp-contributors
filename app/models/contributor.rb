@@ -1,4 +1,6 @@
 class Contributor < ApplicationRecord
+  has_many :commits
+
   PERIODS = {
     'all-time'   => 'All time',
     'today'      => 'Today',
