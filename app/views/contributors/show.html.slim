@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @contributor.name
+
+p
+  strong Avatar url:
+  = @contributor.avatar_url
+
+p
+  strong First committed on:
+  = @contributor.first_committed_on
+
+p
+  strong Rank:
+  = @contributor.rank
+
+=> link_to "Edit", edit_contributor_path(@contributor)
+'|
+=< link_to "Back", contributors_path
