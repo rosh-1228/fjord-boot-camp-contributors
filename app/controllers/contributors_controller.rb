@@ -49,12 +49,6 @@ GRAPHQL
     @commit_ranks.sort_by! { |hash| hash[:rank] }
   end
 
-  def search
-    @commit_ranks = [Contributor.find_by(name: params[:name])] if params[:name]
-    render json: @commit_ranks
-    #binding.pry
-  end
-
   def insert
     cursol = nil
     contributors = []
