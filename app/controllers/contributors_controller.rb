@@ -51,6 +51,8 @@ GRAPHQL
 
   def search
     @commit_ranks = [Contributor.find_by(name: params[:name])] if params[:name]
+    render json: @commit_ranks
+    #binding.pry
   end
 
   def insert
@@ -130,7 +132,13 @@ GRAPHQL
 
   def collect_contributors(commit_ranks)
     Contributor.where.not(choice_period_commit_count).each do |contributor|
-      commit_ranks << {id: contributor.id, avatar_url: contributor.avatar_url, rank: contributor.rank, name: contributor.name, commits: choice_period_commit_count(contributor)}
+      commit_ranks << {
+        avatar_url: contributor.avatar_url,
+        rank: contributor.rank,
+        path: contributor_commits_path(contributor_name: contributor.name),
+        name: contributor.name,
+        commits: choice_period_commit_count(contributor)
+      }
     end
     commit_ranks
   end
