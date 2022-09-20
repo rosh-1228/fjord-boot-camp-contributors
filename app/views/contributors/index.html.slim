@@ -23,17 +23,4 @@ header.page-header
         .show-total_commit_peoples
           = "Showing #{@commit_ranks.count} people"
         .test
-          = form_with url: search_contributors_path, local: true, method: 'get', html: { name: 'search', class: 'header-search' }
-            = text_field_tag 'name', params[:name], class: 'a-xs-text-input header-search__text-input', placeholder: 'ユーザー名を入力して検索'
-            button.a-button.is-sm.is-secondary.is-icon.header-search__submit
-              i.fa-solid.fa-search
-              span
-                | 検索
-              .show-commit_rank
-      table
-        tr
-          th
-          th Avatar
-          th Name
-          th Commits
-        = render partial: 'contributors', collection: @commit_ranks, as: :contributor
+          = react_component("Search", { ranks: @commit_ranks })
