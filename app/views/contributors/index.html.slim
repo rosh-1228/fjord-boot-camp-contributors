@@ -1,26 +1,3 @@
-header.page-header
-  .container
-    .page-header__inner
-      h1.page-header__title
-        = link_to 'FjordBootCamp Contributors', contributors_path
-        ol.page-link__lists
-          li.page-link__list
-            a.about-mordal
-              = link_to 'About', ''
-          li.page-link__list
-            a.fjord-boot-camp-top
-              = link_to 'bootcamp.fjord.jp', 'https://bootcamp.fjord.jp/'
-          li.page-link__list
-            a.fjord-boot-camp-github
-              = link_to 'Contribution on Github', 'https://github.com/fjordllc/bootcamp'
-      nav.global-nav
-        ul.global-nav-items
-          - Contributor::PERIODS.each do |key, period|
-            li.global-nav-item
-              - path = contributors_in_period_path(key)
-              = link_to period, path
-      .main-header__title
-        .show-total_commit_peoples
-          = "Showing #{@commit_ranks.count} people"
-        .test
-          = react_component("Search", { ranks: @commit_ranks })
+.main-header__title
+  .contributors_rank
+    = react_component("ContributorList", { ranks: @commit_ranks })
