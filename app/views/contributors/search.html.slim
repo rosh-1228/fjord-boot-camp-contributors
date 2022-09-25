@@ -1,3 +1,6 @@
 .main-header__title
   .contributors_rank
-    = react_component("SearchResult", { contributor: @contributor })
+    - if @contributor.nil?
+      | 検索結果は0件でした。
+    - else
+      = react_component("SearchResult", { contributor: @contributor })
