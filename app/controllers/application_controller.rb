@@ -1,5 +1,20 @@
 class ApplicationController < ActionController::Base
+  helper_method :all_contributors
+
   class QueryError < StandardError; end
+
+  def all_contributors
+    contributors = []
+    Contributor.all.each do |contributor|
+      contributors << {
+        avatar_url: contributor.avatar_url,
+        path: contributor_commits_path(contributor_name: contributor.name),
+        name: contributor.name,
+        commits: contributor.all_time_commits
+      }
+    end
+    contributors
+  end
 
   private
   def query(definition, variables = {})

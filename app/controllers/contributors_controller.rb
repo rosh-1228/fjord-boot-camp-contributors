@@ -48,6 +48,17 @@ GRAPHQL
     end
     @commit_ranks.sort_by! { |hash| hash[:rank] }
   end
+  
+  def search
+    contributor_info = Contributor.find_by(name: params[:name])
+
+    @contributor = contributor_info.nil? ? nil : [
+      avatar_url: contributor_info.avatar_url,
+      name: contributor_info.name,
+      path: contributor_commits_path(contributor_name: contributor_info.name),
+      commits: contributor_info.all_time_commits
+    ]
+  end
 
   def insert
     cursol = nil
