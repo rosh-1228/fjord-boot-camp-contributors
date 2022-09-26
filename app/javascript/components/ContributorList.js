@@ -25,7 +25,7 @@ const Contributors = (props) => {
     <div>
       <p className="contributors_count">Showing {props.ranks.length} people</p>
       <table className="contributors">
-        <thead  data-type="ok">
+        <thead>
           <tr><th>  </th><th>Name</th><th>Commits</th></tr>
         </thead>
         <tbody>

@@ -44,9 +44,9 @@ const  CommitInfo = (props) => {
   const {hash, committed_on, message} = props.commit
   return (
     <tr>
-      <td><a href={'https://github.com/fjordllc/bootcamp/commit/'+hash}>{hash.substr(0, 7)}</a></td>
+      <td><a href={'https://github.com/fjordllc/bootcamp/commit/'+hash}>{hash.substring(1, 7)}</a></td>
       <td>{committed_on}</td>
-      <td>{(message.length > 60) ? message.substr(0, 60)+'...' : message }</td>
+      <td>{(message.length > 60) ? message.substring(1, 60)+'...' : message }</td>
     </tr>
   )
 }
