@@ -34,12 +34,10 @@ class ContributorsController < ApplicationController
 GRAPHQL
 
   def index
-    #insert
-    #update
+    insert
     @commit_ranks = []
 
     collect_contributors(@commit_ranks)
-    #@commit_ranks.sort_by! { |hash| hash[:rank] }
     commit_count = @commit_ranks.map {|hash| hash[:commits]}
     if commit_count
       commit_counts_sort_reverse = commit_count.sort.reverse
@@ -76,12 +74,21 @@ GRAPHQL
     end
 
     # コントリビューターとコミットを登録するメソッド
-    Contributor.import [:name, :avatar_url], contributors.uniq
+    insert_contributors = contributors.uniq
+    if Contributor.all.count == 0
+      Contributor.import [:name, :avatar_url], insert_contributors
+    elsif Contributor.all.count < insert_contributors.count
+      insert_contributors.shift!(Contributor.all.count)
+      Contributor.import [:name, :avatar_url], insert_contributors
+    end
+    
     names = Contributor.all.pluck(:id, :name).map {|id, name| {id: id, name: name }}
     commits.map {|commit| commit[3] = names.find{|hash| hash[:name] == commit[3]}[:id]}
     Commit.import [:hash, :committed_on, :message, :contributor_id], commits
 
-    update
+    binding.pry
+
+    #update
   end
 
   def collect_contributors_commits(json, contributors, commits)
