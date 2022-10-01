@@ -15,7 +15,8 @@ module FjordBootCampContributors
 
   HTTP = GraphQL::Client::HTTP.new("https://api.github.com/graphql") do
     def headers(context)
-      { "Authorization": ENV["GITHUB_ACCESS_TOKEN"] }
+      #p Rails.application.credentials[:github][:secret_key]
+      { "Authorization": Rails.application.credentials[:github][:secret_key] }
     end
   end
 
