@@ -1,5 +1,4 @@
-class Batch::ContributorCommitCollector < ApplicationController
-  include FjordBootCampContributors
+class Batch::ContributorCommitCollector
   class QueryError < StandardError; end
 
   Query = FjordBootCampContributors::Client.parse <<-GRAPHQL
@@ -36,40 +35,65 @@ class Batch::ContributorCommitCollector < ApplicationController
   }
 GRAPHQL
 
-  def self.contributor_commit_collector
+  def self.regist_db
     p "#{Time.now} start contributor and commit from github"
-    cursol = nil
-    contributors = []
-    commits = []
-    json = query(Query, after: cursol)
 
-    collect_contributors_commits(json['data']['repository']['ref']['target']['history']['edges'], contributors, commits)
+    graphql_cursol = nil
+    contributors_for_registration = []
+    commits_for_registration = []
     
-    ((json['data']['repository']['ref']['target']['history']['totalCount'] / 100) + 1).times do
-      cursol = json['data']['repository']['ref']['target']['history']['pageInfo']['endCursor']
+    #rotate_graphql_query(graphql_cursol, contributors_for_registration, commits_for_registration)
+    fetched_commits = query_github(Query, after: graphql_cursol)
+    #commits_history = fetched_commits['data']['repository']['ref']['target']['history']
+
+    create_array_contributors_commits(fetched_commits['data']['repository']['ref']['target']['history']['edges'], contributors_for_registration, commits_for_registration)
+    
+    ((fetched_commits['data']['repository']['ref']['target']['history']['totalCount'] / 100) + 1).times do
+      graphql_cursol = fetched_commits['data']['repository']['ref']['target']['history']['pageInfo']['endCursor']
       
-      collect_contributors_commits(json['data']['repository']['ref']['target']['history']['edges'], contributors, commits)
-      json = query(Query, after: cursol)
-    end
-
-    # コントリビューターとコミットを登録するメソッド
-    insert_contributors = contributors.uniq
-    if Contributor.all.count == 0
-      Contributor.import [:name, :avatar_url], insert_contributors
-    elsif Contributor.all.count < insert_contributors.count
-      insert_contributors.shift!(Contributor.all.count)
-      Contributor.import [:name, :avatar_url], insert_contributors
+      create_array_contributors_commits(fetched_commits['data']['repository']['ref']['target']['history']['edges'], contributors_for_registration, commits_for_registration)
+      fetched_commits = query_github(Query, after: graphql_cursol)
     end
     
+    import_contributor(contributors_for_registration)
+    import_commits(commits_for_registration)
+
+    update_commit_count_rank
+    p "#{Time.now} end contributor and commit from github"
+  end
+
+  def self.rotate_graphql_query(graphql_cursol, contributors_for_registration, commits_for_registration)
+    fetched_commits = query_github(Query, after: graphql_cursol)
+    commits_history = fetched_commits['data']['repository']['ref']['target']['history']
+
+    create_array_contributors_commits(commits_history['edges'], contributors_for_registration, commits_for_registration)
+    
+    ((commits_history['totalCount'] / 100) + 1).times do
+      graphql_cursol = commits_history['pageInfo']['endCursor']
+      
+      create_array_contributors_commits(commits_history['edges'], contributors_for_registration, commits_for_registration)
+      fetched_commits = query_github(Query, after: graphql_cursol)
+    end
+  end
+
+  def self.import_commits(commits)
     names = Contributor.all.pluck(:id, :name).map {|id, name| {id: id, name: name }}
     commits.map {|commit| commit[3] = names.find{|hash| hash[:name] == commit[3]}[:id]}
     Commit.import [:hash, :committed_on, :message, :contributor_id], commits
+  end
 
-    update_commit_count_rank
+  def self.import_contributor(contributors)
+    contributors = contributors.uniq
+    if Contributor.all.count == 0
+      Contributor.import [:name, :avatar_url], contributors
+    elsif Contributor.all.count < contributors.count
+      contributors.shift(Contributor.all.count)
+      Contributor.import [:name, :avatar_url], contributors
+    end
   end
 
 
-  def self.query(definition, variables = {})
+  def self.query_github(definition, variables = {})
     response = FjordBootCampContributors::Client.query(definition, variables: variables, context: client_context)
 
     if response.errors.any?
@@ -83,11 +107,8 @@ GRAPHQL
     { access_token: FjordBootCampContributors::Application.secrets.github_access_token }
   end
 
-
-
-
-  def self.collect_contributors_commits(json, contributors, commits)
-    json.each do |node|
+  def self.create_array_contributors_commits(fetched_commits, contributors, commits)
+    fetched_commits.each do |node|
       if node['node']['author']['user']
         contributors << [node['node']['author']['user']['login'], node['node']['author']['user']['avatarUrl']]
         commits << [node['node']['oid'], node['node']['author']['date'].to_date, node['node']['message'], node['node']['author']['user']['login']]
@@ -100,14 +121,11 @@ GRAPHQL
 
   def self.update_commit_count_rank
     commit_counts = []
-    (1..Contributor.all.length).each do |contributor_id|
-      commit_counts << Commit.where(contributor_id: contributor_id).count
-    end
+    commit_counts << (1..Contributor.all.length).each {|contributor_id| Commit.where(contributor_id: contributor_id).count}
     commit_counts_sort_reverse = commit_counts.sort.reverse
     commit_counts.map! {|n| commit_counts_sort_reverse.index(n) + 1 }
 
     commit_counts.each.with_index(1) do |contributor_rank, contributor_id|
-      # contributorの更新
       update_contributor(contributor_rank, contributor_id)
     end
   end
