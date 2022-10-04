@@ -42,9 +42,7 @@ GRAPHQL
     contributors_for_registration = []
     commits_for_registration = []
     
-    #rotate_graphql_query(graphql_cursol, contributors_for_registration, commits_for_registration)
     fetched_commits = query_github(Query, after: graphql_cursol)
-    #commits_history = fetched_commits['data']['repository']['ref']['target']['history']
 
     create_array_contributors_commits(fetched_commits['data']['repository']['ref']['target']['history']['edges'], contributors_for_registration, commits_for_registration)
     
@@ -121,10 +119,11 @@ GRAPHQL
 
   def self.update_commit_count_rank
     commit_counts = []
-    commit_counts << (1..Contributor.all.length).each {|contributor_id| Commit.where(contributor_id: contributor_id).count}
+    (1..Contributor.all.length).each do |contributor_id|
+      commit_counts << Commit.where(contributor_id: contributor_id).count
+    end
     commit_counts_sort_reverse = commit_counts.sort.reverse
     commit_counts.map! {|n| commit_counts_sort_reverse.index(n) + 1 }
-
     commit_counts.each.with_index(1) do |contributor_rank, contributor_id|
       update_contributor(contributor_rank, contributor_id)
     end
