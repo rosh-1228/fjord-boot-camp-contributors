@@ -5,8 +5,7 @@ header.page-header
         = link_to 'FjordBootCamp Contributors', contributors_path
         ol.page-link__lists
           li.page-link__list
-            a.about-mordal
-              = link_to 'About', ''
+              = react_component('Description')
           li.page-link__list
             a.fjord-boot-camp-top
               = link_to 'bootcamp.fjord.jp', 'https://bootcamp.fjord.jp/'
@@ -19,4 +18,4 @@ header.page-header
             li.global-nav-item
               - path = contributors_in_period_path(key)
               = link_to period, path
-        = react_component("Search")
+        = react_component('Search')
