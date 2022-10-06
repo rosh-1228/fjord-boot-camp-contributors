@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+
 class SearchResult extends React.Component {
   constructor(props){
     super(props)
