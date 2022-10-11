@@ -1,0 +1,12 @@
+name: Fetch repositroy data
+
+on:
+  schedule:
+    - cron:  '0 0,6,12,18 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run fetch contributor and commit data
+        run: bundle exec bin/rails runner -e development '\''Batch::ContributorCommitCollector.regist_db'\''
