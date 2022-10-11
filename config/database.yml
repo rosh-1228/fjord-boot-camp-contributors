@@ -15,6 +15,7 @@
 # gem 'pg'
 #
 default: &default
+  url: <%= ENV['DATABASE_URL'] %>
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
@@ -81,6 +82,8 @@ test:
 #
 production:
   <<: *default
-  database: fjord_boot_camp_contributors_production
+  url: <%= ENV['DATABASE_URL'] %>
+  adapter: postgresql
+  #database: fjord_boot_camp_contributors_production
   username: fjord_boot_camp_contributors
-  password: <%= ENV['FJORD_BOOT_CAMP_CONTRIBUTORS_DATABASE_PASSWORD'] %>
+  #password: <%= ENV['FJORD_BOOT_CAMP_CONTRIBUTORS_DATABASE_PASSWORD'] %>
