@@ -18,6 +18,7 @@ gem 'graphql-client'
 gem 'react-rails'
 gem 'activerecord-import'
 gem 'whenever', require: false
+gem "bulma-rails"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
