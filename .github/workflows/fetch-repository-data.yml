@@ -10,3 +10,5 @@ jobs:
     steps:
       - name: Run fetch contributor and commit data
         run: bundle exec bin/rails runner -e development '\''Batch::ContributorCommitCollector.regist_db'\''
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
