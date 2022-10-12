@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run fetch contributor and commit data
-        run: bin/rails runner -e development 'Batch::ContributorCommitCollector.regist_db'
+        run: bin/rails runner 'Batch::ContributorCommitCollector.regist_db'
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
