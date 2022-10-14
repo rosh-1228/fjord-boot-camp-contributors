@@ -23,8 +23,8 @@ class CommitList extends React.Component {
 const Commits = (props) => { 
   return (
     <div>
-      <p className="commits_count">Showing {props.commits.length} commits</p>
-      <table className="commits">
+      <p class="commits_count">Showing {props.commits.length} commits</p>
+      <table class="commits is-striped">
         <thead  data-type="ok">
           <tr><th>Hash</th><th>Date</th><th>Message</th></tr>
         </thead>

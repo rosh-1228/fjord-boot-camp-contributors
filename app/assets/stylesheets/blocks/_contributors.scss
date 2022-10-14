@@ -1,0 +1,14 @@
+table tr:nth-child(odd){
+  background:#FFFFFF;
+}
+
+table tr:nth-child(even){
+  background:#CCFFFF;
+}
+
+.horizontal_bar {
+  content: '';
+  display: block;
+  background: #FFEA2A;
+  z-index: 100;
+}

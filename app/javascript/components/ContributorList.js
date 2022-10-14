@@ -13,24 +13,23 @@ class ContributorList extends React.Component {
 
   render() {
     return (
-      <div>
-        <Contributors ranks={this.state.ranks} />
-      </div>
+      <Contributors ranks={this.state.ranks} />
     )
   }
 }
 
-const Contributors = (props) => { 
+const Contributors = (props) => {
   return (
-    <div>
+    <div className="showing_contributors">
       <p className="contributors_count">Showing {props.ranks.length} people</p>
-      <table className="contributors">
+
+      <table className="contributors_table">
         <thead>
           <tr><th>  </th><th>Name</th><th>Commits</th></tr>
         </thead>
         <tbody>
           {props.ranks.map((contributor) =>
-            < ContributorInfo contributor={contributor} key={contributor.id} /> )}
+            <ContributorInfo contributor={contributor} key={contributor.id} /> )}
         </tbody>
       </table>
     </div>
@@ -41,13 +40,14 @@ Contributors.propTypes = {
   ranks: PropTypes.array.isRequired
 }
 
-const  ContributorInfo = (props) => {
+const ContributorInfo = (props) => {
   const {rank, avatar_url, path, name, commits} = props.contributor
+  const width = {width: (commits/10)+'px'}
   return (
     <tr>
       <td>#{rank}</td>
       <td><img src={avatar_url} width="30" height="30" /><a href={path}>  {name}  </a></td>
-      <td>{commits}</td>
+      <td><span className="horizontal_bar" style={width}>{commits}</span></td>
     </tr>
   )
 }

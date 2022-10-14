@@ -24,8 +24,8 @@ const Contributors = (props) => {
   return (
     <div>
       <table className="contributors">
-        <thead  data-type="ok">
-          <tr><th>Name</th><th>Commits</th></tr>
+        <thead>
+          <tr>rank<th>Name</th><th>Commits</th></tr>
         </thead>
         <tbody>
           {props.contributor.map((contributor) =>
@@ -44,7 +44,7 @@ const  ContributorInfo = (props) => {
   const {avatar_url, path, name, commits} = props.contributor
   return (
     <tr>
-      <td><img src={avatar_url} width="30" height="30" /><a href={path}>  {name}  </a></td>
+      <td><img src={avatar_url} width="30" height="30" /><a href={path}>  {name}  </a>aaaaa</td>
       <td>{commits}</td>
     </tr>
   )
