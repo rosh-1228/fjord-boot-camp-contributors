@@ -16,30 +16,29 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div className="searchContributor">
-        <form>
-          <div className="field">
-            <div className="control">
-              <input
-                className="search"
-                type="text"
-                value={this.state.name}
-                name="name"
-                onChange={e => this.onChangeName(e)}
-                onKeyPress={e =>
-                  {
-                    if (e.key === 'Enter') {
-                      e.preventDefault()
-                      this.searchNameurl()
-                    }
+      <div>
+        <form className="search_contributor">
+          <div className="search_field">
+            <input
+              className="search"
+              type="text"
+              value={this.state.name}
+              name="name"
+              onChange={e => this.onChangeName(e)}
+              onKeyPress={e =>
+                {
+                  if (e.key === 'Enter') {
+                    e.preventDefault()
+                    this.searchNameurl()
                   }
                 }
-                placeholder="ユーザー名を入力して検索"
-              />
-            </div>
+              }
+              placeholder="ユーザー名を入力して検索"
+            />
           </div>
-          <div>
+          <div className='serach_button'>
             <input
+              className='button is-primary'
               type="button"
               onClick={() => this.searchNameurl()}
               value="検索"

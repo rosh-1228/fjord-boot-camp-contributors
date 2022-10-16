@@ -34,7 +34,7 @@ class Description extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.openModal}>About</button>
+        <button onClick={this.openModal} className='level-item_button'>About</button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}

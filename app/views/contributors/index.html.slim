@@ -1,1 +1,4 @@
-= react_component("ContributorList", { ranks: @commit_ranks })
+.period_title
+  = "Contributors - #{params[:period].capitalize.gsub(/-/, ' ')}"
+.contributors-list
+  = react_component("ContributorList", { ranks: @commit_ranks })

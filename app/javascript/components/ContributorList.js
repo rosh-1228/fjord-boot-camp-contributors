@@ -25,7 +25,7 @@ const Contributors = (props) => {
 
       <table className="contributors_table">
         <thead>
-          <tr><th>  </th><th>Name</th><th>Commits</th></tr>
+          <tr><th className='table_header'>  </th><th className='table_header'>Name</th><th className='table_header'>Commits</th></tr>
         </thead>
         <tbody>
           {props.ranks.map((contributor) =>
@@ -41,13 +41,25 @@ Contributors.propTypes = {
 }
 
 const ContributorInfo = (props) => {
-  const {rank, avatar_url, path, name, commits} = props.contributor
-  const width = {width: (commits/10)+'px'}
+  const {rank, avatar_url, path, name, first_committed_on, commits} = props.contributor
+  const width = {width: (commits/8)+'px'}
   return (
-    <tr>
-      <td>#{rank}</td>
-      <td><img src={avatar_url} width="30" height="30" /><a href={path}>  {name}  </a></td>
-      <td><span className="horizontal_bar" style={width}>{commits}</span></td>
+    <tr className="contributor_table-row">
+      <td className='table_data_rank'>#{rank}</td>
+      <td className='table_data_info' >
+        <div className='contributor_info'>
+          <img className='contributor_avatar' src={avatar_url} />
+          <div className='contributor_name_since'>
+            <a className='contributor_name' href={path}>  {name}  </a>
+            <p className='contributor_since'>since {first_committed_on}</p>
+          </div>
+        </div>
+      </td>
+      <td className='table_data_graph'>
+        <span className="contributor_horizontal_bar" style={width}>
+          <p className='contributor_commits'>{commits}</p>
+        </span>
+      </td>
     </tr>
   )
 }

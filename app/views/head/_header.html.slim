@@ -1,21 +1,24 @@
-section.hero
+section.hero.is-primary
   .hero-body
-    nav.navbar
-      h1.navbar-brand
-        = link_to 'FjordBootCamp Contributors', contributors_path
-      .navbar-menu
-        .navbar-start
-          .navbar-item
-            = react_component('Description')
-          a.navbar-item
-            = link_to 'bootcamp.fjord.jp', 'https://bootcamp.fjord.jp/'
-          a.navbar-item
-            = link_to 'Contribution on Github', 'https://github.com/fjordllc/bootcamp'
-.navbar-menu
-  .navbar-start
-    - Contributor::PERIODS.each do |key, period|
-      .navbar-item
-        - path = contributors_in_period_path(key)
-        = link_to period, path
-    .navbar-item
-      = react_component('Search')
+    .main-header
+      h1.mein-header_title
+        = link_to 'FjordBootCamp CONTRIBUTORS', contributors_path
+        .main-header_outer-links
+          nav.level
+            .level-left
+              .level-item
+                = react_component('Description')
+              .level-item
+                = link_to 'bootcamp.fjord.jp', 'https://bootcamp.fjord.jp/'
+              .level-item
+                = link_to 'Contribution on Github', 'https://github.com/fjordllc/bootcamp'
+  .header-menu
+    .tabs.is-fullwidth
+      ul.navigation_menu
+        - Contributor::PERIODS.each do |key, period|
+          li.navigation-item
+            - path = contributors_in_period_path(key)
+            span.navigation-item_link
+              = link_to period, path
+        li.navigation-item
+          = react_component('Search')
