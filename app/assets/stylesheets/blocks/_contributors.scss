@@ -49,25 +49,25 @@ table tr:nth-child(even){
   vertical-align: middle;
 }
 
-.contributor_horizontal_bar {
+.contributors_horizontal_bar {
   content: '';
   display: block;
   background: #FFEA2A;
   height: 30px;
 }
 
-.contributor_commits {
+.contributors_commits {
   text-align: right;
   vertical-align: middle;
 }
 
-.contributor_info {
+.contributors_info {
   display: flex;
   width: 205px;
   margin-right: 5px;
 }
 
-.contributor_avatar {
+.contributors_avatar {
   width: 41px;
   height: 41px;
   border-radius: 50%;
@@ -76,13 +76,13 @@ table tr:nth-child(even){
   left: 0;
 }
 
-.contributor_name {
+.contributors_name {
   position: relative;
   top: 0;
   left: 3px;
 }
 
-.contributor_since {
+.contributors_since {
   position: relative;
   top: 0;
   left: 20px;
