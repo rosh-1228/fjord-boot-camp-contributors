@@ -49,7 +49,7 @@ const ContributorInfo = (props) => {
   return (
     <tr className="contributors_table-row">
       <td className='table_data_rank'>#{rank}</td>
-      <td className='table_data_info' >
+      <td className='table_data_contributors-info' >
         <div className='contributors_info'>
           <img className='contributors_avatar' src={avatar_url} />
           <div className='contributor_name_since'>

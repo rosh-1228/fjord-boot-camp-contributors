@@ -24,11 +24,11 @@
   width: 100%;
 }
 
-.search-result-contributor_table tr:nth-child(odd){
+.contributors_table tr:nth-child(odd){
   background:#CCFFFF;
 }
 
-.search-result-contributor_table tr:nth-child(even){
+.contributors_table tr:nth-child(even){
   background:#FFFFFF;
 }
 
@@ -41,7 +41,7 @@
   width: 25px;
 }
 
-.table_data_info {
+.table_data_contributors-info {
   width: 215px;
 }
 
