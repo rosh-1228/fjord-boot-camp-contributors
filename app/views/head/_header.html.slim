@@ -1,21 +1,24 @@
-header.page-header
-  .container
-    .page-header__inner
-      h1.page-header__title
-        = link_to 'FjordBootCamp Contributors', contributors_path
-        ol.page-link__lists
-          li.page-link__list
-              = react_component('Description')
-          li.page-link__list
-            a.fjord-boot-camp-top
-              = link_to 'bootcamp.fjord.jp', 'https://bootcamp.fjord.jp/'
-          li.page-link__list
-            a.fjord-boot-camp-github
-              = link_to 'Contribution on Github', 'https://github.com/fjordllc/bootcamp'
-      nav.global-nav
-        ul.global-nav-items
-          - Contributor::PERIODS.each do |key, period|
-            li.global-nav-item
-              - path = contributors_in_period_path(key)
+section.hero.is-primary
+  .hero-body
+    .main-header
+      h1.mein-header_title
+        = link_to 'FjordBootCamp CONTRIBUTORS', contributors_path
+        .main-header_outer-links
+          nav.level
+            .level-left
+              .level-item
+                = react_component('Description')
+              .level-item
+                = link_to 'bootcamp.fjord.jp', 'https://bootcamp.fjord.jp/'
+              .level-item
+                = link_to 'Contribution on Github', 'https://github.com/fjordllc/bootcamp'
+  .header-menu
+    .tabs.is-fullwidth
+      ul.navigation_menu
+        - Contributor::PERIODS.each do |key, period|
+          li.navigation-item
+            - path = contributors_in_period_path(key)
+            span.navigation-item_link
               = link_to period, path
-        = react_component('Search')
+        li.navigation-item
+          = react_component('Search')

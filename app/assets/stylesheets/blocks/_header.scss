@@ -1,0 +1,80 @@
+.hero {
+  height: 47px;
+}
+
+.main-header {
+  position: relative;
+}
+
+.mein-header_title {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 36px;
+  position: absolute;
+  top: -50px;
+  left: -40px;
+}
+
+.main-header_outer-links {
+  display: flex;
+  align-items: flex-end;
+  font-size: 18px;
+  position: relative;
+  top: 10px;
+}
+
+.level-left {
+  position: absolute;
+  top: -45px;
+  left: 650px;
+}
+
+.level-item {
+  color: #FFFFFF;
+  margin: 0 10px;
+}
+
+.level-item_button {
+  color: #FFFFFF;
+}
+
+.header-menu {
+  color: black;
+}
+
+.navigation_menu {
+  position: absolute;
+  top: 50px;
+  left: 1px;
+}
+
+.navigation-item {
+  width: 162px;
+}
+
+.navigation-item_link {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.search_contributor {
+  width: 400px;
+  display: flex;
+}
+
+.search {
+  width: 250px;
+  height: 2.6em;
+  padding: 0 16px;
+  border-radius: 7px;
+  border: none;
+  box-shadow: 0 0 0 1px #ccc inset;
+}
+
+.serach_button {
+  margin: 0 1px;
+  position: relative;
+  bottom: 0;
+  right: 0;
+}
+

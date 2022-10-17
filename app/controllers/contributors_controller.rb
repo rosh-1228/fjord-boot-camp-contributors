@@ -32,6 +32,7 @@ class ContributorsController < ApplicationController
         rank: contributor.rank,
         path: contributor_commits_path(contributor_name: contributor.name),
         name: contributor.name,
+        first_committed_on: contributor.first_committed_on,
         commits: choice_period_commit_count(contributor)
       }
     end

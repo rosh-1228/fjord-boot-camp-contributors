@@ -1,3 +1,10 @@
 .main-header__title
-  .contributors_rank
+  .contributor
+    .contributor_rank
+      = "##{@contributor.rank}"
+    .avatar_block
+      = image_tag @contributor.avatar_url, class: 'contributor_avatar'
+    .contributor_name
+      = @contributor.name
+  .commit_list
     = react_component("CommitList", { commits: @index })

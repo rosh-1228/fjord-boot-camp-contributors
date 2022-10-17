@@ -1,3 +1,7 @@
-.main-header__title
-  .contributors_rank
-    = react_component("ContributorList", { ranks: @commit_ranks })
+.period_title
+  - if params[:period].nil?
+    = "Contributors - This month"
+  - else
+    = "Contributors - #{params[:period].capitalize.gsub(/-/, ' ')}"
+.contributors-list
+  = react_component("ContributorList", { ranks: @commit_ranks })

@@ -2,7 +2,6 @@ class CommitsController < ApplicationController
   def index
     @contributor = set_contributor
     @index = set_comments(@contributor)
-    @contributors = all_contributors
   end
 
   private

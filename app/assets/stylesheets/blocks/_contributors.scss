@@ -1,0 +1,89 @@
+.period_title {
+  position: relative;
+  top: 75px;
+  left: 30px;
+  font-size: 50px;
+}
+
+.showing_contributors {
+  position: relative;
+  top: 65px;
+  left: 10px;
+}
+
+.contributors_count {
+  position: relative;
+  top: 0;
+  left: 25px;
+}
+
+.contributors_table {
+  position: relative;
+  top: 20px;
+  left: 0;
+  width: 100%;
+}
+
+.search-result-contributor_table tr:nth-child(odd){
+  background:#CCFFFF;
+}
+
+.search-result-contributor_table tr:nth-child(even){
+  background:#FFFFFF;
+}
+
+.table_header {
+  background: #FFFFFF;
+}
+
+.table_data_rank {
+  vertical-align: middle;
+  width: 25px;
+}
+
+.table_data_info {
+  width: 215px;
+}
+
+.table_data_graph {
+  vertical-align: middle;
+}
+
+.contributors_horizontal_bar {
+  content: '';
+  display: block;
+  background: #FFEA2A;
+  height: 30px;
+}
+
+.contributors_commits {
+  text-align: right;
+  vertical-align: middle;
+}
+
+.contributors_info {
+  display: flex;
+  width: 205px;
+  margin-right: 5px;
+}
+
+.contributors_avatar {
+  width: 41px;
+  height: 41px;
+  border-radius: 50%;
+  position: relative;
+  top: 4px;
+  left: 0;
+}
+
+.contributors_name {
+  position: relative;
+  top: 0;
+  left: 3px;
+}
+
+.contributors_since {
+  position: relative;
+  top: 0;
+  left: 20px;
+}

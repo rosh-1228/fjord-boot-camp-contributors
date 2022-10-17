@@ -1,0 +1,69 @@
+.search_result_zero {
+  position: relative;
+  top: 80px;
+  left: 10px;
+}
+
+.search_result_component {
+  position: relative;
+  top: 80px;
+  left: 0;
+}
+
+.table_header_name {
+  background: #FFFFFF;
+}
+
+.table_header_commits {
+  background: #FFFFFF;
+}
+
+.table_data_contributor-name {
+  position: relative;
+  top: 0;
+  left: 70px;
+}
+
+.search-result-contributor_table {
+  width: 100%;
+}
+
+.contributor_result_info {
+  display: flex;
+  align-items: center;
+  width: 220px;
+}
+
+.contributor_result_avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: relative;
+  top: 4px;
+  left: 0;
+  margin: 0 10px;
+}
+
+.contributor_result_name {
+  position: relative;
+  top: 5px;
+  font-size: 1.3em;
+}
+
+.contributor_result_commits {
+  position: relative;
+  top: 0;
+  left: 3px;
+  font-size: 1.3em;
+}
+
+.table_data_info {
+  background:#CCFFFF;
+  height: 60px;
+}
+
+.table_data_commits {
+  vertical-align: middle;
+  background:#CCFFFF;
+  height: 60px;
+}

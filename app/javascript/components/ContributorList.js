@@ -13,24 +13,26 @@ class ContributorList extends React.Component {
 
   render() {
     return (
-      <div>
-        <Contributors ranks={this.state.ranks} />
-      </div>
+      <Contributors ranks={this.state.ranks} />
     )
   }
 }
 
-const Contributors = (props) => { 
+const Contributors = (props) => {
   return (
-    <div>
+    <div className="showing_contributors">
       <p className="contributors_count">Showing {props.ranks.length} people</p>
-      <table className="contributors">
+
+      <table className="contributors_table">
         <thead>
-          <tr><th>  </th><th>Name</th><th>Commits</th></tr>
+          <tr>
+            <th className='table_header'>  </th>
+            <th className='table_header'>Name</th>
+            <th className='table_header'>Commits</th></tr>
         </thead>
         <tbody>
           {props.ranks.map((contributor) =>
-            < ContributorInfo contributor={contributor} key={contributor.id} /> )}
+            <ContributorInfo contributor={contributor} key={contributor.id} /> )}
         </tbody>
       </table>
     </div>
@@ -41,13 +43,26 @@ Contributors.propTypes = {
   ranks: PropTypes.array.isRequired
 }
 
-const  ContributorInfo = (props) => {
-  const {rank, avatar_url, path, name, commits} = props.contributor
+const ContributorInfo = (props) => {
+  const {rank, avatar_url, path, name, first_committed_on, commits} = props.contributor
+  const width = {width: (commits/8)+'px'}
   return (
-    <tr>
-      <td>#{rank}</td>
-      <td><img src={avatar_url} width="30" height="30" /><a href={path}>  {name}  </a></td>
-      <td>{commits}</td>
+    <tr className="contributors_table-row">
+      <td className='table_data_rank'>#{rank}</td>
+      <td className='table_data_info' >
+        <div className='contributors_info'>
+          <img className='contributors_avatar' src={avatar_url} />
+          <div className='contributor_name_since'>
+            <a className='contributors_name' href={path}>  {name}  </a>
+            <p className='contributors_since'>since {first_committed_on}</p>
+          </div>
+        </div>
+      </td>
+      <td className='table_data_graph'>
+        <span className="contributors_horizontal_bar" style={width}>
+          <p className='contributors_commits'>{commits}</p>
+        </span>
+      </td>
     </tr>
   )
 }

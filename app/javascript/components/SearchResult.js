@@ -13,9 +13,7 @@ class SearchResult extends React.Component {
 
   render() {
     return (
-      <div>
-        <Contributors contributor={this.state.contributor} />
-      </div>
+      <Contributors contributor={this.state.contributor} />
     )
   }
 }
@@ -23,11 +21,16 @@ class SearchResult extends React.Component {
 const Contributors = (props) => { 
   return (
     <div>
-      <table className="contributors">
-        <thead  data-type="ok">
-          <tr><th>Name</th><th>Commits</th></tr>
+      <table className="search-result-contributor_table">
+        <thead className='table_head'>
+          <tr className='table_header_row'>
+            <th className='table_header_name'>
+              <p className='table_data_contributor-name'>Name</p>
+            </th>
+            <th className='table_header_commits'>Commits</th>
+          </tr>
         </thead>
-        <tbody>
+        <tbody className='table_body'>
           {props.contributor.map((contributor) =>
             < ContributorInfo contributor={contributor} key={contributor.id} /> )}
         </tbody>
@@ -43,9 +46,16 @@ Contributors.propTypes = {
 const  ContributorInfo = (props) => {
   const {avatar_url, path, name, commits} = props.contributor
   return (
-    <tr>
-      <td><img src={avatar_url} width="30" height="30" /><a href={path}>  {name}  </a></td>
-      <td>{commits}</td>
+    <tr className="contributor_result_table-row">
+      <td className='table_data_info' >
+        <div className='contributor_result_info'>
+          <img className='contributor_result_avatar' src={avatar_url} />
+          <a className='contributor_result_name' href={path}>  {name}  </a>
+        </div>
+      </td>
+      <td className='table_data_commits'>
+        <p className='contributor_result_commits'>{commits}</p>
+      </td>
     </tr>
   )
 }
