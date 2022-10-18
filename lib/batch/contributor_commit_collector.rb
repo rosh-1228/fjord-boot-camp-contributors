@@ -77,7 +77,12 @@ GRAPHQL
   def self.import_commits(commits)
     names = Contributor.all.pluck(:id, :name).map {|id, name| {id: id, name: name }}
     commits.map {|commit| commit[3] = names.find{|hash| hash[:name] == commit[3]}[:id]}
-    Commit.import [:hash, :committed_on, :message, :contributor_id], commits
+    if Commit.all.count == 0
+      Commit.import [:hash, :committed_on, :message, :contributor_id], commits
+    elsif Commit.all.count < commits.count
+      commits.shift(Commit.all.count)      
+      Commit.import [:hash, :committed_on, :message, :contributor_id], commits
+    end
   end
 
   def self.import_contributor(contributors)
