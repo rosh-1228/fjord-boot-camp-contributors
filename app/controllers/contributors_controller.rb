@@ -16,7 +16,7 @@ class ContributorsController < ApplicationController
     contributor_info = Contributor.find_by(name: params[:name])
 
     @contributor = contributor_info.nil? ? nil : [
-      avatar_url: contributor_info.avatar_url,
+      avatar_url: change_nil_avatar_to_default_img(contributor_info.avatar_url),
       name: contributor_info.name,
       path: contributor_commits_path(contributor_name: contributor_info.name),
       commits: contributor_info.all_time_commits
@@ -24,11 +24,16 @@ class ContributorsController < ApplicationController
   end
 
   private
+  
+  def change_nil_avatar_to_default_img(avatar)
+    avatar = '/assets/kkrn_icon_user_9.svg' if avatar.nil?
+    avatar
+  end
 
   def collect_contributors(commit_ranks)
     Contributor.where.not(choice_period_commit_count).each do |contributor|
       commit_ranks << {
-        avatar_url: contributor.avatar_url,
+        avatar_url: change_nil_avatar_to_default_img(contributor.avatar_url),
         rank: contributor.rank,
         path: contributor_commits_path(contributor_name: contributor.name),
         name: contributor.name,
