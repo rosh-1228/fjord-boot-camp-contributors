@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "ContributorTests", type: :system do
+RSpec.describe 'ContributorTests', type: :system do
   describe 'verify ranking', js: true do
     before do
       create(:contributor_1)
@@ -21,10 +21,10 @@ RSpec.describe "ContributorTests", type: :system do
     end
   end
 
-  describe '', js: true do
-    it '', js: true do
+  describe 'verify show commit table', js: true do
+    it 'verify show commit message', js: true do
       create(:contributor_1)
-      commits = [["b782403f68b013ac2e5d6ab9f08291b39b4deaca",'2021-01-01',"Merge pull request #5624 from fjordllc/bug/fix-validation-failure\n\nブックマーク登録時にUserが重複した時に発生するバリデーションエラーのバグを修正した",1],["fa47e7eff042bf095e30dd541dc6015f2f1c2f07",'2022-01-01',"Merge pull request #5434 from fjordllc/bug/twitter_card_bug\n\nTwitterに投稿しても画像が出ない",1]]
+      commits = [['aaaaaaaaaaaaaaaaaaaaaaaaaaaaa','2021-01-01','commit test message',1],['bbbbbbbbbbbbbbbbbbbbbbbd','2022-01-01','commit test message2',1]]
       Commit.import [:hash, :committed_on, :message, :contributor_id], commits
       commit = Commit.find_by(contributor_id: Contributor.find(1).id)
       visit contributor_commits_path(Contributor.find(commit.contributor_id).name)
@@ -33,8 +33,25 @@ RSpec.describe "ContributorTests", type: :system do
       commit_table.shift()
       commit_table = commit_table.transpose[2]
       
-      expect(commit_table[0]).to eq('Merge pull request #5624 from fjordllc/bug/fix-validation-failure ブックマーク登録時にUserが重複した時に発生するバリデーションエラーのバグを修正した')
-      expect(commit_table[1]).to eq('Merge pull request #5434 from fjordllc/bug/twitter_card_bug Twitterに投稿しても画像が出ない')
+      expect(commit_table[0]).to eq('commit test message')
+      expect(commit_table[1]).to eq('commit test message2')
+    end
+  end
+
+  describe 'verify ', js: true do
+    before do
+      create(:contributor_1)
+    end
+
+    it '', js: true do
+      visit '/'      
+      find('input[type="text"]').set('rosh-1228')
+      click_button '検索'
+
+      search_result_table = page.find('table').all('tr').map { |row| row.all('th, td').map { |cell| cell.text.strip } }
+      search_result_table.shift()
+
+      expect(search_result_table.flatten[0]).to eq('rosh-1228')
     end
   end
 end
