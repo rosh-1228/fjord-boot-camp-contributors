@@ -19,6 +19,7 @@ gem 'react-rails'
 gem 'activerecord-import'
 gem 'whenever', require: false
 gem "bulma-rails"
+gem "net-smtp"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -27,6 +28,8 @@ group :development, :test do
   gem 'dead_end'
   gem 'pry-byebug'
   gem 'traceroute'
+  gem 'spring-commands-rspec'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -41,6 +44,9 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
   gem 'webdrivers'
+
+  # not default
+  gem 'rspec-rails', '~> 6.0.0'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
