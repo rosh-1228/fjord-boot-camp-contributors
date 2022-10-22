@@ -1,4 +1,0 @@
-example_id                                     | status | run_time     |
----------------------------------------------- | ------ | ------------ |
-./spec/system/contributor_tests_spec.rb[1:1:1] | passed | 1.54 seconds |
-./spec/system/contributor_tests_spec.rb[1:2:1] | passed | 6.76 seconds |
