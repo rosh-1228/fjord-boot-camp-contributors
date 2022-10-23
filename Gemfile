@@ -20,6 +20,8 @@ gem 'activerecord-import'
 gem 'whenever', require: false
 gem "bulma-rails"
 gem "net-smtp"
+gem 'net-pop'
+gem 'net-imap'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

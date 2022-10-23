@@ -1,6 +1,8 @@
 doctype html
 html
   head
+    favicon
+      = favicon_link_tag('/assets/favicon.ico')
     header
       = render 'head/header'
     title
@@ -10,6 +12,5 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-    = stylesheet_pack_tag 'stylesheets/application'
   body
     = yield
