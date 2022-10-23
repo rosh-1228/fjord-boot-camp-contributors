@@ -1,17 +1,20 @@
 section.hero.is-primary
   .hero-body
     .main-header
-      h1.mein-header_title
-        = link_to 'FjordBootCamp CONTRIBUTORS', contributors_path
-        .main-header_outer-links
-          nav.level
-            .level-left
-              .level-item
-                = react_component('Description')
-              .level-item
-                = link_to 'bootcamp.fjord.jp', 'https://bootcamp.fjord.jp/'
-              .level-item
-                = link_to 'Contribution on Github', 'https://github.com/fjordllc/bootcamp'
+      h1.main-header_title
+        .main-header_title-icon
+          = image_tag 'favicon.ico'
+        .main-header_title-text
+          = link_to 'FjordBootCamp CONTRIBUTORS', contributors_path
+      .main-header_outer-links
+        nav.level
+          .level-left
+            .level-item
+              = react_component('Description')
+            .level-item
+              = link_to 'bootcamp.fjord.jp', 'https://bootcamp.fjord.jp/'
+            .level-item
+              = link_to 'Contribution on Github', 'https://github.com/fjordllc/bootcamp'
   .header-menu
     .tabs.is-fullwidth
       ul.navigation_menu

@@ -6,12 +6,18 @@
   position: relative;
 }
 
-.mein-header_title {
+.main-header_title {
   font-family: 'Varela Round', sans-serif;
   font-size: 36px;
   position: absolute;
   top: -50px;
   left: -40px;
+  display: flex;
+}
+
+.main-header_title-icon {
+  height: 40px;
+  width: 40px;
 }
 
 .main-header_outer-links {
