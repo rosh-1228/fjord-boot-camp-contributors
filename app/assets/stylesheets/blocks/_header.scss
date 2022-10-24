@@ -1,5 +1,6 @@
 .hero {
   height: 47px;
+  width: 100%;
 }
 
 .main-header {
@@ -16,6 +17,8 @@
 }
 
 .main-header_title-icon {
+  position: relative;
+  top: 6px;
   height: 40px;
   width: 40px;
 }
@@ -25,7 +28,7 @@
   align-items: flex-end;
   font-size: 18px;
   position: relative;
-  top: 10px;
+  top: 18px;
 }
 
 .level-left {
@@ -49,7 +52,7 @@
 
 .navigation_menu {
   position: absolute;
-  top: 50px;
+  top: 48px;
   left: 1px;
 }
 

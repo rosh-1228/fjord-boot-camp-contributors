@@ -10,7 +10,7 @@ class Search extends React.Component {
     this.setState({name : event.target.value})
   }
 
-  searchNameurl(){
+  searchNameurl() {
     location.href='/contributors/search?name='+this.state.name
   }
 
