@@ -45,7 +45,8 @@ Contributors.propTypes = {
 
 const ContributorInfo = (props) => {
   const {rank, avatar_url, path, name, first_committed_on, commits} = props.contributor
-  const width = {width: (commits/8)+'px'}
+  const width = (commits >= 100) ? { width: '100%'} : { width: commits+'%'}
+
   return (
     <tr className="contributors_table-row">
       <td className='table_data_rank'>#{rank}</td>
