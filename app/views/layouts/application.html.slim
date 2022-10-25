@@ -1,13 +1,8 @@
 doctype html
 html
   head
-    = favicon_link_tag('favicon.ico')
-    meta[name="twitter:card" content="summary_large_image"]
-    meta[name="twitter:site" content="@rosh_1228"]
-    meta[property="og:url" content="https://fjord-boot-camp-contributors-production.up.railway.app/"]
-    meta[property="og:title" content="FjordBootCamp CONTRIBUTORS"]
-    meta[property="og:description" content="フィヨルドブートキャンプ アプリのリポジトリに対するcommit数を集計し、ランキングを表示するサイトです。"]
-    meta[property="og:image" content="twitter-card-img.png"]
+    /*= favicon_link_tag('favicon.ico')*/
+    = display_meta_tags(default_meta_tags)
     header
       = render 'head/header'
     title
