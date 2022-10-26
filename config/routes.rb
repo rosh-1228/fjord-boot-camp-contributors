@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resources :commits
-  root to: "contributors#index"
+  root to: 'contributors#index'
   resources :contributors, only: 'index', param: :name do
     resources :commits, only: 'index'
     collection do

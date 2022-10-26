@@ -1,0 +1,7 @@
+linters:
+  LineLength:
+    max: 250
+  RuboCop:
+    enabled: true
+    ignored_cops:
+      - bin/**/*

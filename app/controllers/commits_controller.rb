@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class CommitsController < ApplicationController
   def index
     @contributor = set_contributor
-    @index = set_comments(@contributor)
+    @index = search_comments(@contributor)
   end
 
   private
@@ -10,7 +12,7 @@ class CommitsController < ApplicationController
     Contributor.find_by(name: params[:contributor_name])
   end
 
-  def set_comments(contributor)
+  def search_comments(contributor)
     Commit.where(contributor_id: contributor.id)
   end
 end
