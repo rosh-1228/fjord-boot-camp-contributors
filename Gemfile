@@ -1,46 +1,50 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.2'
-gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
+gem 'bootsnap', '>= 1.4.4', require: false
+gem 'jbuilder', '~> 2.7'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
+gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
 gem 'sass-rails', '>= 6'
-gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
-gem 'jbuilder', '~> 2.7'
-gem 'bootsnap', '>= 1.4.4', require: false
+gem 'webpacker', '~> 5.0'
 
 # not default
-gem 'slim-rails'
+gem 'activerecord-import'
+gem 'bulma-rails'
 gem 'graphql'
 gem 'graphql-client'
-gem 'react-rails'
-gem 'activerecord-import'
-gem 'whenever', require: false
-gem "bulma-rails"
-gem "net-smtp"
-gem 'net-pop'
-gem 'net-imap'
 gem 'meta-tags'
+gem 'net-imap'
+gem 'net-pop'
+gem 'net-smtp'
+gem 'react-rails'
+gem 'slim-rails'
+gem 'whenever', require: false
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
   # not default
   gem 'dead_end'
-  gem 'pry-byebug'
-  gem 'traceroute'
-  gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
+  gem 'pry-byebug'
+  gem 'spring-commands-rspec'
+  gem 'traceroute'
 end
 
 group :development do
-  gem 'web-console', '>= 4.1.0'
-  gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
-  gem 'spring'
+  gem 'rack-mini-profiler', '~> 2.0'
+  gem 'rubocop', require: false
+  gem 'rubocop-fjord', require: false
   gem 'slim_lint'
+  gem 'spring'
+  gem 'web-console', '>= 4.1.0'
 end
 
 group :test do
@@ -52,4 +56,4 @@ group :test do
   gem 'rspec-rails', '~> 6.0.0'
 end
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

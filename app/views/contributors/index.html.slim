@@ -1,7 +1,7 @@
 .period_title
   - if params[:period].nil?
-    = "Contributors - This month"
+    = 'Contributors - This month'
   - else
-    = "Contributors - #{params[:period].capitalize.gsub(/-/, ' ')}"
+    = "Contributors - #{params[:period].capitalize.tr('-', ' ')}"
 .contributors-list
-  = react_component("ContributorList", { ranks: @commit_ranks })
+  = react_component('ContributorList', { ranks: @commit_ranks })

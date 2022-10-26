@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
-  factory :contributor_1, class: Contributor do
+  factory :contributor1, class: Contributor do
     id { 1 }
     name { 'rosh-1228' }
     avatar_url { 'https://avatars.githubusercontent.com/u/64620506?u=62fc452d277dff2d1f5d97acbc6a9a6851f3a24a&v=4' }
@@ -12,7 +14,7 @@ FactoryBot.define do
     all_time_commits { 30 }
   end
 
-  factory :contributor_2, class: Contributor do
+  factory :contributor2, class: Contributor do
     id { 2 }
     name { 'rosh-0000' }
     avatar_url { 'https://avatars.githubusercontent.com/u/64620506?u=62fc452d277dff2d1f5d97acbc6a9a6851f3a24a&v=4' }
@@ -25,7 +27,7 @@ FactoryBot.define do
     all_time_commits { 25 }
   end
 
-  factory :contributor_3, class: Contributor do
+  factory :contributor3, class: Contributor do
     id { 3 }
     name { 'rosh-9999' }
     avatar_url { 'https://avatars.githubusercontent.com/u/64620506?u=62fc452d277dff2d1f5d97acbc6a9a6851f3a24a&v=4' }
