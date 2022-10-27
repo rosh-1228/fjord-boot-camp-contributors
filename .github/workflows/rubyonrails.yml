@@ -1,7 +1,7 @@
 name: batch
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '* */6 * * *'
 
 jobs:
   build:
