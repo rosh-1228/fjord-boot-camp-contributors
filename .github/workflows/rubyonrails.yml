@@ -1,7 +1,7 @@
 name: batch
 on:
   schedule:
-    - cron: '* */6 * * *'
+    - cron: '*/7 * * * *'
 
 jobs:
   build:
@@ -10,6 +10,9 @@ jobs:
     steps:
       - name: Install Railway
         run: npm i -g @railway/cli
+      
+      - name: Authenicate the CLI
+        run: RAILWAY_TOKEN=${{ secrets.RAILWAY_TOKEN }} railway login --browserless
       
       - name: batch
         run: RAILWAY_TOKEN=${{ secrets.RAILWAY_TOKEN }} railway run bundle exec rails runner lib/batch/contributor_commit_collector.rb
