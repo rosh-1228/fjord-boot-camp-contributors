@@ -11,4 +11,5 @@ jobs:
         run: npm i -g @railway/cli
       
       - name: batch
-        run: railway run rails runner lib/batch/contributor_commit_collector.rb
+        run: railway run rails runner lib/batch/contributor_commit_collector.rbenv:
+        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
