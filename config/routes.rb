@@ -10,4 +10,9 @@ Rails.application.routes.draw do
     end
   end
   get 'contributors/:period', to: 'contributors#index', as: 'contributors_in_period'
+  resources :ping_tasks, only: :none do
+    collection do
+      get :task1
+    end
+  end
 end
