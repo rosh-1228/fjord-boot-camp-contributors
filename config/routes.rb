@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'contributors/:period', to: 'contributors#index', as: 'contributors_in_period'
   resources :ping_tasks, only: :none do
     collection do
-      get :task1
+      get :fetch_commit
     end
   end
 end
