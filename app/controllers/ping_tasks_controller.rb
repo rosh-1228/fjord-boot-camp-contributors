@@ -1,6 +1,6 @@
 class PingTasksController < ApplicationController
   def task1
-    `RAILS_ENV=#{Rails.env} bundle exec rake task1 --trace`
+    `RAILS_ENV=#{Rails.env} bundle exec rails runner lib/batch/contributor_commit_collector.rb`
 
     head :no_content
   end
