@@ -10,4 +10,10 @@ class PingTasksController < ApplicationController
 
     head :no_content
   end
+
+  private
+
+  def from_new_relic?
+    return head :no_content if params[:new_relic].blank? || params[:new_relic].to_s != 'true'
+  end
 end
