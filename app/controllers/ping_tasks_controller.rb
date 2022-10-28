@@ -7,6 +7,12 @@ class PingTasksController < ApplicationController
     head :no_content
   end
 
+  def health_check
+    `RAILS_ENV=#{Rails.env} bundle exec rake health_check --trace`
+
+    head :no_content
+  end
+
   private
 
   def from_new_relic?
