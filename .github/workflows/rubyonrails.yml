@@ -13,14 +13,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      # Add or replace dependency steps here
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@0a29871fe2b0200a17a4497bae54fe5df0d973aa
         with:
-         ruby-version: '3.1'
-      # Add or replace test runners here
+          ruby-version: '3.1'
+      - name: Install dependencies
+        run: bundle install
       - name: Run tests
-        run: bin/rspec
+        run: bundle exec rspec spec/
 
   lint:
     runs-on: ubuntu-latest
