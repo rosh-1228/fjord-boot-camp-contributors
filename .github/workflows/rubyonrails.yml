@@ -58,8 +58,6 @@ jobs:
           npm install
           npm install @babel/preset-react
           npm install @babel/plugin-syntax-jsx
-      - name: Build
-        run: npm run build
       - name: Run tests
         run: bundle exec rspec spec/
 
