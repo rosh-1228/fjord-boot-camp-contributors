@@ -6,7 +6,6 @@ AllCops:
   SuggestExtensions: false
   Exclude:
     - 'app/views/**/*'
-    - 'config/*'
     - 'config/**/*'
     - 'config.ru'
     - 'node_modules/**/*'
