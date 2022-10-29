@@ -12,8 +12,8 @@ jobs:
         image: postgres:14.5
         env:
           POSTGRES_DB: fjord_boot_camp_contributors_test
-          POSTGRES_USER: root
-          POSTGRES_PASSWORD: root
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
