@@ -44,6 +44,13 @@ jobs:
           cp config/database.yml.ci config/database.yml
           bundle exec rails db:create
           bundle exec rails db:migrate
+      - name: Setup yarn and node
+        run: |
+          curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+          echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+          apt-get update -qq
+          apt-get install -y nodejs yarn
+          yarn install
       - name: install webpacker
         run: |
           rm -rf bin/webpack*
@@ -53,7 +60,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16
-      - name: install react
+      - name: install npm
         run: |
           npm install
           npm install @babel/preset-react
