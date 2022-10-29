@@ -49,10 +49,17 @@ jobs:
           rm -rf bin/webpack*
           bundle exec rails webpacker:install
           bundle exec rails webpacker:compile
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
       - name: install react
         run: |
+          npm install
           npm install @babel/preset-react
           npm install @babel/plugin-syntax-jsx
+      - name: Build
+        run: npm run build
       - name: Run tests
         run: bundle exec rspec spec/
 
