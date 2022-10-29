@@ -10,17 +10,8 @@ jobs:
     services:
       postgres:
         image: postgres:14.5
-        env:
-          POSTGRES_DB: fjord_boot_camp_contributors_test
-          POSTGRES_USER: pguser
-          POSTGRES_PASSWORD: password
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
         ports:
-        - 5432:5432
+          - 5432:5432
 
     env:
       RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
@@ -58,6 +49,7 @@ jobs:
           echo '::set-env name=DATABASE_URL::postgres://postgres:postgres@localhost:5432/fjord_boot_camp_contributors_test'
       - name: setup DB
         run: |
+          cp config/database.yml.ci config/database.yml
           bundle exec rails db:schema:load
       - name: Run tests
         run: bundle exec rspec spec/
