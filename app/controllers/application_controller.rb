@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
 
   def test_method
     # This is a method for CI confirmation.
-    # It is turned off as soon as the confirmation is finished. 
+    # It is turned off as soon as the confirmation is finished.
   end
 end

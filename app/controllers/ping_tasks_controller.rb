@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PingTasksController < ApplicationController
   before_action :from_new_relic?
 
