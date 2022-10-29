@@ -9,44 +9,27 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:14.5
+        image: postgres:11-alpine
         ports:
-          - 5432:5432
+          - "5432:5432"
+        env:
+          POSTGRES_DB: fjord_boot_camp_contributors_test
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: root
 
     env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgres://rails:password@localhost:5432/fjord_boot_camp_contributors_test"
       RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+      # Add or replace dependency steps here
       - name: Install Ruby and gems
-        uses: ruby/setup-ruby@0a29871fe2b0200a17a4497bae54fe5df0d973aa
+        uses: ruby/setup-ruby@0a29871fe2b0200a17a4497bae54fe5df0d973aa # v1.115.3
         with:
-          ruby-version: '3.1'
-      - name: Install dependencies
-        run: bundle install
-      - name: Cache gems
-        uses: actions/cache@v1
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gem-
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Install dependencies
-        run: |
-          gem install bundler
-          bundle install --path vendor/bundle --without production
-          yarn install
-      - name: Set env
-        run: |
-          echo '::set-env name=RAILS_ENV::test'
-          echo '::set-env name=DATABASE_URL::postgres://postgres:postgres@localhost:5432/fjord_boot_camp_contributors_test'
+          bundler-cache: true
       - name: setup DB
         run: |
           cp config/database.yml.ci config/database.yml
