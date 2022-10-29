@@ -25,7 +25,7 @@ jobs:
     env:
       RAILS_ENV: test
       DATABASE_PORT: 5432
-      DATABASE_HOST: postgres
+      DATABASE_HOST: localhost
       RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       
     steps:
