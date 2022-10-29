@@ -18,7 +18,7 @@ jobs:
     env:
       RAILS_ENV: test
       RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-      DATABASE_URL: "postgres://rails:password@localhost:5432/fjord_boot_camp_contributors_test"
+      DATABASE_URL: "postgres://localhost:5432/fjord_boot_camp_contributors_test"
 
     steps:
       - uses: actions/checkout@v3
@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: bundle install
       - name: Set up database schema
-        run: bin/rails db:schema:load
+        run: bundle exec rails db:schema:load
       - name: Run tests
         run: bundle exec rspec spec/
 
