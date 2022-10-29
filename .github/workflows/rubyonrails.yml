@@ -50,8 +50,9 @@ jobs:
           bundle exec rails webpacker:install
           bundle exec rails webpacker:compile
       - name: install react
-        run: npm install @babel/preset-react
-        run: npm install @babel/plugin-syntax-jsx
+        run: |
+          npm install @babel/preset-react
+          npm install @babel/plugin-syntax-jsx
       - name: Run tests
         run: bundle exec rspec spec/
 
