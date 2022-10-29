@@ -1,7 +1,5 @@
 name: "Ruby on Rails CI"
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 jobs:
@@ -21,12 +19,13 @@ jobs:
           --health-retries 5
         ports:
         - 5432:5432
-
-    env:
-      RAILS_ENV: test
-      DATABASE_PORT: 5432
-      DATABASE_HOST: localhost
-      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+    container:
+      image: ruby:3.0.2
+      env:
+        RAILS_ENV: test
+        DATABASE_PORT: 5432
+        DATABASE_HOST: postgres
+        RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       
     steps:
       - uses: actions/checkout@v3
@@ -52,8 +51,16 @@ jobs:
         uses: ruby/setup-ruby@0a29871fe2b0200a17a4497bae54fe5df0d973aa # v1.115.3
         with:
           ruby-version: '3.1'
+      - name: Install library for postgres
+        run: apt-get update && apt-get -yqq install libpq-dev
+      - name: Bundle install
+        run: bundle install --path=vendor/bundle --jobs 4 --retry 3
+      - name: Install Node.js
+        run: |
+          curl -sL https://deb.nodesource.com/setup_14.x | bash -
+          apt-get update && apt-get install -y nodejs
       - name: Install dependencies
-        run: bundle install
+        run: npm i
       - name: Lint Ruby files
         run: bundle exec rubocop -a
       - name: Lint Slim files
