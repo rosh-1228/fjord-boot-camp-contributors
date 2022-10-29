@@ -14,6 +14,13 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  config.before(:each, type: :system) do |example|
+    driven_by :selenium, screen_size: [1400, 1400], using: :headless_chrome do |options|
+      options.add_argument('--disable-dev-sim-usage')
+      options.add_argument('--no-sandbox')
+    end
+  end
+
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
   config.example_status_persistence_file_path = 'spec/examples.txt'
