@@ -3,5 +3,3 @@ test:
   adapter: postgresql
   host: localhost
   encoding: unicode
-  username: <%= ENV[“POSTGRES_USER”] %>
-  password: <%= ENV[“POSTGRES_PASSWORD”] %>
