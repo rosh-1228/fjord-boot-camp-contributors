@@ -5,3 +5,4 @@ test:
   password: root
   host: 127.0.0.1
   database: fjord_boot_camp_contributors_test
+  port: 5432
