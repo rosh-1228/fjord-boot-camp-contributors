@@ -3,3 +3,5 @@ test:
   adapter: postgresql
   host: localhost
   encoding: unicode
+  username: root
+  password: root
