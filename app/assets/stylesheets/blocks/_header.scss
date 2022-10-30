@@ -130,12 +130,10 @@
     width: 20px;
   }
 
-  /* チェックボックスを非表示にする */
   .drawer_hidden {
     display: none;
   }
 
-  /* ハンバーガーアイコンの設置スペース */
   .drawer_open {
     display: flex;
     height: 40px;
@@ -143,13 +141,12 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    z-index: 100;/* 重なり順を一番上にする */
+    z-index: 100;
     cursor: pointer;
     top: -35px;
-    left: -23px;
+    left: -61px;
   }
 
-  /* ハンバーガーメニューのアイコン */
   .drawer_open span,
   .drawer_open span:before,
   .drawer_open span:after {
@@ -163,22 +160,18 @@
     position: absolute;
   }
 
-  /* 三本線の一番上の棒の位置調整 */
   .drawer_open span:before {
     bottom: 8px;
   }
 
-  /* 三本線の一番下の棒の位置調整 */
   .drawer_open span:after {
     top: 8px;
   }
 
-  /* アイコンがクリックされたら真ん中の線を透明にする */
   #drawer_input:checked ~ .drawer_open span {
     background: rgba(255, 255, 255, 0);
   }
 
-  /* アイコンがクリックされたらアイコンが×印になように上下の線を回転 */
   #drawer_input:checked ~ .drawer_open span::before {
     bottom: 0;
     transform: rotate(45deg);
@@ -194,23 +187,38 @@
     height: 100%;
     position: fixed;
     top: 0;
-    left: 100%; /* メニューを画面の外に飛ばす */
+    left: 100%;
     z-index: 99;
     background: #fff;
     transition: .5s;
   }
 
   #drawer_input:checked ~ .level-left {
-    left: 0;/* メニューを画面に入れる */
+    left: 0;
   }
 
   .level-item {
     list-style: none;
     color: #000000;
+    position: relative;
+    top: 20px;
+    left: -80px;
+  }
+
+  #is-pc {
+    display: none;
+  }
+
+  .navigation-item_for-smartphone {
+    color: #FFFFFF;
+    position: relative;
+    top: -75px;
+    left: 355px;
+    font-size: 14px;
   }
 
   .level-item_button {
-    color: #000000;
+    color: #FFFFFF;
   }
 
   .header-menu {

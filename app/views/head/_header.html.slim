@@ -7,12 +7,14 @@ section.hero.is-primary
           .main-header_title-text
             = link_to 'FjordBootCamp CONTRIBUTORS', contributors_path
       .main-header_outer-links
+        .navigation-item_for-smartphone
+          = react_component('Description')
         nav.level
           input#drawer_input.drawer_hidden type="checkbox" /
           label.drawer_open for="drawer_input" 
             span
           .level-left
-            .level-item
+            .level-item#is-pc
               = react_component('Description')
             .level-item
               = link_to 'bootcamp.fjord.jp', 'https://bootcamp.fjord.jp/'
