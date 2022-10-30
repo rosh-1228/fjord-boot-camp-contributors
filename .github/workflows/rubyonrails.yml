@@ -30,9 +30,6 @@ jobs:
       
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16'
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@0a29871fe2b0200a17a4497bae54fe5df0d973aa
         with:
@@ -44,14 +41,31 @@ jobs:
           cp config/database.yml.ci config/database.yml
           bundle exec rails db:create
           bundle exec rails db:migrate
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build --if-present
       - name: install webpacker
         run: |
           rm -rf bin/webpack*
           bundle exec rails webpacker:install
+          bundle exec rails webpacker:install:react
           bundle exec rails webpacker:compile
-      - name: install react
-        run: npm install @babel/preset-react
-        run: npm install @babel/plugin-syntax-jsx
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: install npm
+        run: |
+          npm install
+          npm install @babel/preset-react
+          npm install @babel/plugin-syntax-jsx
       - name: Run tests
         run: bundle exec rspec spec/
 
