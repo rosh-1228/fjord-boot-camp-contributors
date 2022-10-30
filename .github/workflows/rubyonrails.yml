@@ -55,6 +55,7 @@ jobs:
         run: |
           rm -rf bin/webpack*
           bundle exec rails webpacker:install
+          bundle exec rails webpacker:install:react
           bundle exec rails webpacker:compile
       - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
