@@ -39,7 +39,7 @@ class Description extends React.Component {
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           style={customStyles}
-          contentLabel="Example Modal"
+          contentLabel="Modal"
         >
           <button className='delete' onClick={this.closeModal}></button>
           <h2 className='modal_this_site_title' ref={subtitle => this.subtitle = subtitle}>フィヨルドブートキャンプ生のコミットランキングサイト</h2>

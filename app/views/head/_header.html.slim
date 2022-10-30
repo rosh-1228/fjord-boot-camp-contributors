@@ -8,6 +8,9 @@ section.hero.is-primary
             = link_to 'FjordBootCamp CONTRIBUTORS', contributors_path
       .main-header_outer-links
         nav.level
+          input#drawer_input.drawer_hidden type="checkbox" /
+          label.drawer_open for="drawer_input" 
+            span
           .level-left
             .level-item
               = react_component('Description')

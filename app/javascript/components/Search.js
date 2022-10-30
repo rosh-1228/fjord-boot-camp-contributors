@@ -38,7 +38,7 @@ class Search extends React.Component {
           </div>
           <div className='serach_button'>
             <input
-              className='button is-primary'
+              className='button'
               type="button"
               onClick={() => this.searchNameurl()}
               value="検索"
