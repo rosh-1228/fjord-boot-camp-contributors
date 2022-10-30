@@ -67,3 +67,17 @@
   background:#d9d9d9;
   height: 60px;
 }
+
+@media screen and (max-width: 480px) {
+  .table_header_commits {
+    position: relative;
+    top: 0;
+    left: -70px;
+  }
+
+  .contributor_result_commits {
+    position: relative;
+    top: 0;
+    left: -70px;
+  }
+}
