@@ -47,7 +47,7 @@ const  CommitInfo = (props) => {
   return (
     <tr className='commit_table-row'>
       <td className='commit_hash'><a href={'https://github.com/fjordllc/bootcamp/commit/'+hash}>{hash.substring(1, 7)}</a></td>
-      <td className='commit_since'>{committed_on}</td>
+      <td className='commit_since'><p className='commit_since-text'>{committed_on}</p></td>
       <td className='commit_message_row'><p className='commit_message'>{message}</p></td>
     </tr>
   )

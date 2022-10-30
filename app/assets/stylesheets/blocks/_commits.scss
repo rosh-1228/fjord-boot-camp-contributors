@@ -73,3 +73,56 @@ table tr:nth-child(even){
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@media screen and (max-width: 480px) {
+  .contributor {
+    position: relative;
+    top: 55px;
+    left: 23px;
+    vertical-align: middle;
+  }
+
+  .contributor_rank {
+    font-size: 30px;
+  }
+
+  .contributor_avatar {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    margin: 0 10px;
+  }
+  
+  .contributor_name {
+    font-size: 30px;
+  }
+
+  .commits_count {
+    position: relative;
+    top: -10px;
+    left: 15px;
+  }
+
+  .commits_table {
+    position: relative;
+    top: 20px;
+    left: -5px;
+  }
+
+  .commit_table-row {
+    font-size: 15px;
+    width: 570px;
+    line-height: 0.8;
+  }
+
+  .commit_since {
+    vertical-align: middle;
+  }
+  
+  .commit_message {
+    width: 460px;
+  }
+  .commit_since-text {
+    width: 100px;
+  }
+}
