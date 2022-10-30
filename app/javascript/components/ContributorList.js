@@ -27,8 +27,8 @@ const Contributors = (props) => {
         <thead>
           <tr>
             <th className='table_header'>  </th>
-            <th className='table_header'>Name</th>
-            <th className='table_header'>Commits</th></tr>
+            <th className='table_header'><p className='table_header-name'>Name</p></th>
+            <th className='table_header'><p className='table_header-commits_count'>Commits</p></th></tr>
         </thead>
         <tbody>
           {props.ranks.map((contributor) =>

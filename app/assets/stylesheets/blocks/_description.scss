@@ -23,3 +23,25 @@
   width: 30px;
   height: 30px;
 }
+
+@media screen and (max-width: 480px) {
+  .modal_this_site_title {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .modal_sub-title {
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .modal_sentence {
+    line-height: 18px;
+    font-size: 9px;
+  }
+
+  .modal_author-name {
+    font-size: 9px;
+  }
+}
