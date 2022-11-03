@@ -1,7 +1,0 @@
-.search_result
-  - if @contributor.nil?
-    .search_result_zero
-      | 検索結果は0件でした。
-  - else
-    .search_result_component
-      = react_component('SearchResult', { contributor: @contributor })
