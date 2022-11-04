@@ -4,9 +4,7 @@ module ImportDB
   def import_contributor(contributors)
     contributors = contributors.uniq
     if Contributor.all.count.zero?
-      Contributor.import %i[name avatar_url], contributors
-    elsif Contributor.all.count < contributors.count
-      contributors.shift(Contributor.all.count)
+      contributors.shift(Contributor.all.count) if Contributor.all.count < contributors.count
       Contributor.import %i[name avatar_url], contributors
     end
   end
