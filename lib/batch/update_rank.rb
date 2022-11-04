@@ -26,7 +26,8 @@ module UpdateRank
   end
 
   def find_first_committed_on(contributor_id)
-    Commit.where(contributor_id: contributor_id).order(:committed_on).first.committed_on unless Commit.where(contributor_id: contributor_id).empty?
+    contributor = Commit.where(contributor_id: contributor_id)
+    contributor.order(:committed_on).first.committed_on unless contributor.empty?
   end
 
   def find_contributor_commits_count(contributor_id, commit_period)
