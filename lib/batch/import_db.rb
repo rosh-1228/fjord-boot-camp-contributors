@@ -21,9 +21,7 @@ module ImportDB
     change_name_to_id(commits)
 
     if Commit.all.count.zero?
-      Commit.import %i[hash committed_on message contributor_id], commits
-    elsif Commit.all.count < commits.count
-      commits.shift(Commit.all.count)
+      commits.shift(Commit.all.count) if Commit.all.count < commits.count
       Commit.import %i[hash committed_on message contributor_id], commits
     end
   end
