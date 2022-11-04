@@ -32,10 +32,17 @@ New Relicからwebサービスに対して、pingを実行することでトリ�
 ```
 git clone https://github.com/rosh-1228/fjord-boot-camp-contributors.git
 ```
+## 起動
+```
+bin/setup
+rails s
+```
+## Lint
 - lint
 ```
 bin/lint
 ```
+## Test
 - spec(システムテスト)
 ```
 bundle exec rspec spec/
