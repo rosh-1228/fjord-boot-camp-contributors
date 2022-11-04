@@ -3,10 +3,20 @@
 module ImportDB
   def import_contributor(contributors)
     contributors = contributors.uniq
-    if Contributor.all.count.zero?
-      contributors.shift(Contributor.all.count) if Contributor.all.count < contributors.count
-      Contributor.import %i[name avatar_url], contributors
-    end
+    all_contibutors_count = Contributor.all.count
+    repo_contributors_count = contributors.count
+
+    contributors.shift(Contributor.all.count) if all_contibutors_count < repo_contributors_count
+    Contributor.import %i[name avatar_url], contributors unless all_contibutors_count >= repo_contributors_count
+  end
+
+  def import_commits(commits)
+    change_name_to_id(commits)
+    all_commits_count = Commit.all.count
+    repo_commits_count = commits.count
+
+    commits.shift(Commit.all.count) if all_commits_count < repo_commits_count
+    Commit.import %i[hash committed_on message contributor_id], commits unless all_commits_count >= repo_commits_count
   end
 
   def change_name_to_id(commits)
@@ -14,15 +24,6 @@ module ImportDB
 
     commits.map do |commit|
       commit[3] = names.find { |hash| hash[:name] == commit[3] }[:id] unless names.find { |hash| hash[:name] == commit[3] }.nil?
-    end
-  end
-
-  def import_commits(commits)
-    change_name_to_id(commits)
-
-    if Commit.all.count.zero?
-      commits.shift(Commit.all.count) if Commit.all.count < commits.count
-      Commit.import %i[hash committed_on message contributor_id], commits
     end
   end
 end
