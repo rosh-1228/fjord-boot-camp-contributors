@@ -32,6 +32,13 @@ New Relicからwebサービスに対して、pingを実行することでトリ�
 ```
 git clone https://github.com/rosh-1228/fjord-boot-camp-contributors.git
 ```
+## データの入れ方
+`Rails.application.credentials`を使用しているので、Master.keyが必要です。
+ご連絡いただければお渡しします。
+以下実行していただければ、ローカルにデータを投入できます。
+```
+bundle exec rails runner lib/batch/contributor_commit_collector.rb
+```
 ## 起動
 ```
 bin/setup
@@ -47,6 +54,3 @@ bin/lint
 ```
 bundle exec rspec spec/
 ```
-- secret key
-
-`Rails.application.credentials`を使用しているので、Master.keyが必要な場合はご連絡ください。
