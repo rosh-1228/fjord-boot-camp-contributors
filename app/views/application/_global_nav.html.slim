@@ -1,0 +1,17 @@
+nav.global-nav
+  .container
+    .global-nav__inner
+      .global-nav__start
+        .global-nav__tabs
+          .tabs
+            ul.tabs__items
+              - Contributor::PERIODS.each do |key, period|
+                li.tabs__item
+                  - path = contributors_in_period_path(key)
+                  - if params[:period]
+                    = link_to period, path, class: "tabs__item-link #{params[:period] == key ? 'is-active' : ''}"
+                  - else
+                    = link_to period, path, class: "tabs__item-link #{'this-month' == key ? 'is-active' : ''}"
+      .global-nav__end
+        .global-nav__search
+          = react_component('Search')

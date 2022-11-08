@@ -7,7 +7,7 @@ class CommitList extends React.Component {
     this.state = {initialCommits: this.props.commits, commits:[]}
   }
 
-  componentDidMount() { 
+  componentDidMount() {
     this.setState({commits: this.state.initialCommits})
   }
 
@@ -18,16 +18,15 @@ class CommitList extends React.Component {
   }
 }
 
-const Commits = (props) => { 
+const Commits = (props) => {
   return (
-    <div className='showing_comitts'>
-      <p className="commits_count">Showing {props.commits.length} commits</p>
-      <table className="commits_table">
+    <div className='commits__table-wrapper'>
+      <table className="commits__list">
         <thead>
           <tr>
-            <th className='table_header'>Hash</th>
-            <th className='table_header'>Date</th>
-            <th className='table_header'>Message</th></tr>
+            <th className='commits__label is-hash'>Hash</th>
+            <th className='commits__label is-date'>Date</th>
+            <th className='commits__label is-massage'>Showing {props.commits.length} commits</th></tr>
         </thead>
         <tbody>
           {props.commits.map((commit) =>
@@ -45,10 +44,10 @@ Commits.propTypes = {
 const  CommitInfo = (props) => {
   const {hash, committed_on, message} = props.commit
   return (
-    <tr className='commit_table-row'>
-      <td className='commit_hash'><a href={'https://github.com/fjordllc/bootcamp/commit/'+hash}>{hash.substring(1, 7)}</a></td>
-      <td className='commit_since'><p className='commit_since-text'>{committed_on}</p></td>
-      <td className='commit_message_row'><p className='commit_message'>{message}</p></td>
+    <tr className='commits-commit'>
+      <td className='commits-commit__hash'><a href={'https://github.com/fjordllc/bootcamp/commit/'+hash} className='commits-commit__hash-link'>{hash.substring(1, 7)}</a></td>
+      <td className='commits-commit__date is-nowrap'>{committed_on}</td>
+      <td className='commits-commit__message'><a href={'https://github.com/fjordllc/bootcamp/commit/'+hash} className='commits-commit__message-link'>{message}</a></td>
     </tr>
   )
 }
