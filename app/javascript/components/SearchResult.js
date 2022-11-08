@@ -4,16 +4,16 @@ import PropTypes from "prop-types"
 class SearchResult extends React.Component {
   constructor(props){
     super(props)
-    this.state = {initialContributors: this.props.contributor, contributor:[]}
+    this.state = {initialContributors: this.props.contributors, contributors:[]}
   }
 
   componentDidMount() { 
-    this.setState({contributor: this.state.initialContributors})
+    this.setState({contributors: this.state.initialContributors})
   }
 
   render() {
     return (
-      <Contributors contributor={this.state.contributor} />
+      <Contributors contributors={this.state.contributors} />
     )
   }
 }
@@ -31,8 +31,8 @@ const Contributors = (props) => {
           </tr>
         </thead>
         <tbody className='table_body'>
-          {props.contributor.map((contributor) =>
-            < ContributorInfo contributor={contributor} key={contributor.id} /> )}
+          {props.contributors.map((contributor) =>
+            <ContributorInfo contributor={contributor} key={contributor.id} /> )}
         </tbody>
       </table>
     </div>
@@ -45,6 +45,7 @@ Contributors.propTypes = {
 
 const  ContributorInfo = (props) => {
   const {avatar_url, path, name, commits} = props.contributor
+
   return (
     <tr className="contributor_result_table-row">
       <td className='table_data_info' >
