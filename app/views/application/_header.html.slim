@@ -4,7 +4,7 @@ header.header
       .header__start
         .header__logo
           = link_to contributors_path, class: 'header__logo-link' do
-            .header__logo-image
+            = image_tag('pijord.svg', alt: 'フィヨルドブートキャンプのマーク', class: 'header__logo-image')
             .header__logo-type
               | FBC Contributors
         = react_component('Description')

@@ -45,9 +45,9 @@ const  CommitInfo = (props) => {
   const {hash, committed_on, message} = props.commit
   return (
     <tr className='commits-commit'>
-      <td className='commits-commit__hash'><a href={'https://github.com/fjordllc/bootcamp/commit/'+hash} className='commits-commit__hash-link'>{hash.substring(1, 7)}</a></td>
-      <td className='commits-commit__date is-nowrap'>{committed_on}</td>
-      <td className='commits-commit__message'><a href={'https://github.com/fjordllc/bootcamp/commit/'+hash} className='commits-commit__message-link'>{message}</a></td>
+      <td className='commits-commit__hash is-text-align-center'><a href={'https://github.com/fjordllc/bootcamp/commit/'+hash} className='commits-commit__hash-link' target='_blank' rel='noopner'>{hash.substring(1, 7)}</a></td>
+      <td className='commits-commit__date is-nowrap is-text-align-center'>{committed_on}</td>
+      <td className='commits-commit__message'><a href={'https://github.com/fjordllc/bootcamp/commit/'+hash} className='commits-commit__message-link' target='_blank' rel='noopner'>{message}</a></td>
     </tr>
   )
 }

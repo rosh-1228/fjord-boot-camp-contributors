@@ -23,6 +23,17 @@
 .header__logo-link
   color: $reversal-text
   text-decoration: none
+  display: flex
+  @media screen and (min-width: 768px)
+    gap: .625rem
+  @media screen and (max-width: 767px)
+    gap: .5rem
+
+.header__logo-image
+  @media screen and (min-width: 768px)
+    width: 2em
+  @media screen and (max-width: 767px)
+    width: 1.75em
 
 .header__logo-type
   font-family: 'Fredoka One', sans-serif

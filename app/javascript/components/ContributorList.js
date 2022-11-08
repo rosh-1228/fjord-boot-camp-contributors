@@ -54,7 +54,7 @@ const ContributorInfo = (props) => {
   return (
     <tr className='contributors-contributor'>
       <td >
-        <div className='contributors-contributor__rank'>#{rank}</div>
+        <div className='contributors-contributor__rank is-text-align-center'>#{rank}</div>
       </td>
       <td>
         <div className='contributors-contributor__metas'>

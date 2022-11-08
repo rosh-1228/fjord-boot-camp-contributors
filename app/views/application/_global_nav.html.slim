@@ -10,8 +10,10 @@ nav.global-nav
                   - path = contributors_in_period_path(key)
                   - if params[:period]
                     = link_to period, path, class: "tabs__item-link #{params[:period] == key ? 'is-active' : ''}"
-                  - else
+                  - elsif params[:controller] == 'contributors'
                     = link_to period, path, class: "tabs__item-link #{'this-month' == key ? 'is-active' : ''}"
+                  - else
+                    = link_to period, path, class: 'tabs__item-link'
       .global-nav__end
         .global-nav__search
           = react_component('Search')
