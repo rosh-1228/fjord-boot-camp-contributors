@@ -17,9 +17,9 @@ header.header
             .header__nav-item.is-about
               = react_component('Description')
             .header__nav-item
-              = link_to 'bootcamp.fjord.jp', 'https://bootcamp.fjord.jp/', class: 'header__nav-item-link'
+              = link_to 'https://bootcamp.fjord.jp/', target: '_blank', rel: 'noopener', class: 'header__nav-item-link' do
+                | FjordBootCamp
             .header__nav-item
-              = link_to 'Contribution on Github',\
-              'https://github.com/fjordllc/bootcamp',\
-              class: 'header__nav-item-link'
+              = link_to 'https://github.com/fjordllc/bootcamp', target: '_blank', rel: 'noopener', class: 'header__nav-item-link' do
+                | Contribution on Github
           label.header__nav-overlay(for='drawer-input')

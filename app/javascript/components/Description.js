@@ -46,7 +46,7 @@ class Description extends React.Component {
         >
           <div className='modal-content'>
             <h2 className='modal-content__title'>bootcamp の Commit ランキングサイト</h2>
-            <p>FBC Contributors は、<a href='https://github.com/fjordllc/bootcamp' target='_blank' rel='noopner'>bootcamp repository</a> の Main Branch に Merge された Commit 数を集計し、ランキング表示をします。</p>
+            <p>FBC Contributors は、<a href='https://github.com/fjordllc/bootcamp' target='_blank' rel='noopener'>bootcamp repository</a> の Main Branch に Merge された Commit 数を集計し、ランキング表示をします。</p>
             <p>
               就職活動の際、自身が行った Commit 一覧を企業に提出するとき、
               他の人がどんな Commit を行ったか、どれくらい Commit を確認したいときに便利です。
@@ -65,17 +65,17 @@ class Description extends React.Component {
             <p>rosh-1228</p>
             <ul className='inline-list'>
               <li className='inline-list__item'>
-                <a href='https://github.com/rosh-1228/fjord-boot-camp-contributors' target='_blank' rel='noopner'>
+                <a href='https://github.com/rosh-1228/fjord-boot-camp-contributors' target='_blank' rel='noopener'>
                   <i className='fa-brands fa-github'></i>
                 </a>
               </li>
               <li className='inline-list__item'>
-                <a href='https://twitter.com/rosh_1228' target='_blank' rel='noopner'>
+                <a href='https://twitter.com/rosh_1228' target='_blank' rel='noopener'>
                   <i className='fa-brands fa-twitter'></i>
                 </a>
               </li>
               <li className='inline-list__item'>
-                <a href='https://rosh-1228.hatenablog.com/' target='_blank' rel='noopner'>
+                <a href='https://rosh-1228.hatenablog.com/' target='_blank' rel='noopener'>
                   <img src='/assets/hatenablog-logo.svg' alt='はてなブログロゴマーク' />
                 </a>
               </li>
