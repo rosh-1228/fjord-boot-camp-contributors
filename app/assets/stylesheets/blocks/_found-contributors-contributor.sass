@@ -1,0 +1,46 @@
+.found-contributors-contributor__metas
+  display: flex
+  align-items: center
+
+.found-contributors-contributor__avatar
+  @media screen and (min-width: 768px)
+    width: 2.75rem
+    height: 2.75rem
+  @media screen and (max-width: 767px)
+    width: 2.25rem
+    height: 2.25rem
+
+.found-contributors-contributor__avatar-image
+  width: 100%
+  height: 100%
+  display: block
+  object-fit: cover
+  border-radius: .25rem
+
+.found-contributors-contributor__attributes
+  margin-left: 1rem
+  flex: 1
+
+.found-contributors-contributor__title-name
+  color: $main
+  font-weight: 400
+  font-family: 'Fredoka One', sans-serif
+  @media screen and (min-width: 768px)
+    font-size: 1.375rem
+  @media screen and (max-width: 767px)
+    font-size: 1rem
+  .found-contributors-contributor__title-link:hover &
+    text-decoration: underline
+
+.found-contributors-contributor__title-link
+  text-decoration: none
+  display: flex
+  justify-content: space-between
+
+.found-contributors-contributor__title-commits
+  color: $text
+  margin-left: .75em
+  @media screen and (min-width: 768px)
+    font-size: .875rem
+  @media screen and (max-width: 767px)
+    font-size: .75rem

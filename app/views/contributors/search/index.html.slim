@@ -1,7 +1,15 @@
-.search_result
+header.main__header
+  .container
+    .main__header-inner
+      h1.main__title
+        | Search for '#{params[:name]}'
+.main__body
   - if @contributors.blank?
-    .search_result_zero
-      | Search result has no contributor.
+    .main-empty
+      .container
+        .main-empty__inner
+          i.far.fa-sad-tear
+          p.main-empty__message
+            | No contributor found.
   - else
-    .search_result_component
-      = react_component('SearchResult', { contributors: @contributors })
+    = react_component('SearchResult', { contributors: @contributors })
