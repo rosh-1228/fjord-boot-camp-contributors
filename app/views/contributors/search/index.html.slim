@@ -1,7 +1,7 @@
 .search_result
-  - if @contributors.nil?
+  - if @contributors.blank?
     .search_result_zero
-      | 検索結果は0件でした。
+      | Search result has no contributor.
   - else
     .search_result_component
       = react_component('SearchResult', { contributors: @contributors })
