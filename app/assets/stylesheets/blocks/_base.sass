@@ -1,0 +1,62 @@
+@charset "UTF-8"
+
+html
+  background-color: $background
+  color: $text
+  scroll-behavior: smooth
+
+h1,h2,h3,h4,h5,h6
+  font-size: inherit
+  font-weight: inherit
+
+a
+  color: $main
+  transition: all .2s ease-out
+
+.a-text-link
+  color: $text
+  text-decoration: none
+  &:hover
+    color: $main
+    text-decoration: underline
+
+input[type="text"],
+textarea
+  background-color: white
+  border: solid 1px $header__border
+  outline-offset: 0
+  outline-color: #f7da26
+  outline-width: 1px
+
+::placeholder
+  color: #cfcfcf
+
+.container
+  max-width: 100%
+  @media screen and (min-width: 768px)
+    padding: 0 2rem
+  @media screen and (max-width: 767px)
+    padding: 0 1rem
+
+table
+  border-collapse: collapse
+
+.is-hidden-checkbox
+  opacity: 0
+  position: absolute
+
+.is-nowrap
+  white-space: nowrap
+
+.is-text-align-center
+  text-align: center
+
+.is-text-align-right
+  text-align: right
+
+@media screen and (min-width: 768px)
+  .is-hidden-tablet
+    display: none !important
+@media screen and (max-width: 767px)
+  .is-hidden-mobile
+    display: none !important

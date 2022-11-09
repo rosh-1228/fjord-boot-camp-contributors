@@ -1,0 +1,24 @@
+.contributors__list
+  width: 70rem
+  max-width: 100%
+  margin: 0 auto
+  thead
+    background-color: $background
+  tbody
+    background-color: $base
+  td
+    border: solid 1px $border
+    @media screen and (min-width: 768px)
+      padding: .75rem
+    @media screen and (max-width: 767px)
+      padding: .5rem
+  tr
+    &:nth-child(even)
+      background-color: #fafafa
+
+.contributors__label
+  font-size: .75rem
+  &.is-rank
+    width: 3rem
+  &.is-name
+    width: 15rem

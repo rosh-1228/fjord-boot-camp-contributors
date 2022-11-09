@@ -1,0 +1,26 @@
+.global-nav
+  background-color: $main
+
+.global-nav__inner
+  display: flex
+  align-items: center
+  gap: 2rem
+  overflow: hidden
+  @media screen and (max-width: 928px)
+    margin: 0 -1rem
+
+.global-nav__inner
+  overflow-x: auto
+
+.global-nav__start
+  @media screen and (max-width: 928px)
+    padding: 0 1rem
+
+.global-nav__end
+  @media screen and (min-width: 929px)
+    display: block
+  @media screen and (max-width: 928px)
+    position: fixed
+    bottom: 0
+    left: 0
+    right: 0

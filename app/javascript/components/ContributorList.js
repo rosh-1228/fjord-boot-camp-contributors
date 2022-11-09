@@ -7,7 +7,7 @@ class ContributorList extends React.Component {
     this.state = {initialContributors: this.props.ranks, ranks:[]}
   }
 
-  componentDidMount() { 
+  componentDidMount() {
     this.setState({ranks: this.state.initialContributors})
   }
 
@@ -20,21 +20,25 @@ class ContributorList extends React.Component {
 
 const Contributors = (props) => {
   return (
-    <div className="showing_contributors">
-      <p className="contributors_count">Showing {props.ranks.length} people</p>
-
-      <table className="contributors_table">
-        <thead>
-          <tr>
-            <th className='table_header'>  </th>
-            <th className='table_header'><p className='table_header-name'>Name</p></th>
-            <th className='table_header'><p className='table_header-commits_count'>Commits</p></th></tr>
-        </thead>
-        <tbody>
-          {props.ranks.map((contributor) =>
-            <ContributorInfo contributor={contributor} key={contributor.id} topCommits={props.ranks[0].commits} /> )}
-        </tbody>
-      </table>
+    <div className="contributors">
+      <div className="contributors__body">
+        <div className="container">
+          <div className="contributors__body-inner">
+            <table className="contributors__list">
+              <thead>
+                <tr>
+                  <th className="contributors__label is-rank">Rank</th>
+                  <th className="contributors__label is-name">Showing {props.ranks.length} people</th>
+                  <th className="contributors__label is-commits">Commits</th></tr>
+              </thead>
+              <tbody>
+                {props.ranks.map((contributor) =>
+                  <ContributorInfo contributor={contributor} key={contributor.id} topCommits={props.ranks[0].commits} /> )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
@@ -48,21 +52,27 @@ const ContributorInfo = (props) => {
   const width = (rank === 1) ? { width: '100%'} : { width: ((commits/props.topCommits)*100)+'%'}
 
   return (
-    <tr className="contributors_table-row">
-      <td className='table_data_rank'>#{rank}</td>
-      <td className='table_data_contributors-info' >
-        <div className='contributors_info'>
-          <img className='contributors_avatar' src={avatar_url} />
-          <div className='contributor_name_since'>
-            <a className='contributors_name' href={path}>  {name}  </a>
-            <p className='contributors_since'>since {first_committed_on}</p>
+    <tr className='contributors-contributor'>
+      <td >
+        <div className='contributors-contributor__rank is-text-align-center'>#{rank}</div>
+      </td>
+      <td>
+        <div className='contributors-contributor__metas'>
+          <div className='contributors-contributor__avatar'>
+            <img className='contributors-contributor__avatar-image' src={avatar_url} />
+          </div>
+          <div className='contributors-contributor__attributes'>
+            <h2 className='contributors-contributor__name'>
+              <a className='contributors-contributor__name-link' href={path}>{name}</a>
+            </h2>
+            <p className='contributors-contributor__since'>since {first_committed_on}</p>
           </div>
         </div>
       </td>
-      <td className='table_data_graph'>
-        <span className="contributors_horizontal_bar" style={width}>
-          <p className='contributors_commits'>{commits}</p>
-        </span>
+      <td className='contributors-contributor__activity'>
+        <p className='contributors-contributor__commit-count'>{commits}</p>
+        <div className="contributors-contributor__activity-graph" style={width}>
+        </div>
       </td>
     </tr>
   )

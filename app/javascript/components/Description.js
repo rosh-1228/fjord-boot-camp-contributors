@@ -3,8 +3,8 @@ import Modal from 'react-modal'
 
 const customStyles = {
   content : {
-    top                   : '40%',
-    left                  : '40%',
+    top                   : '50%',
+    left                  : '50%',
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : 'auto',
@@ -33,38 +33,56 @@ class Description extends React.Component {
 
   render() {
     return (
-      <div className='content'>
-        <button onClick={this.openModal} className='level-item_button'>About</button>
+      <>
+        <a onClick={this.openModal} className='header__nav-item-link is-about is-hidden-mobile'>About</a>
+        <a onClick={this.openModal} className='header__about-link is-hidden-tablet'><i className='fas fa-question-circle'></i></a>
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           style={customStyles}
           contentLabel='Modal'
+          className='modal__content'
+          overlayClassName='modal__overlay'
         >
-          <div className='modal_description-about-site'>
-            <button className='delete' onClick={this.closeModal}></button>
-            <h2 className='modal_this_site_title' ref={subtitle => this.subtitle = subtitle}>フィヨルドブートキャンプ生のコミットランキングサイト</h2>
-            <p className='modal_sentence'>fjord boot camp contributorは、フィヨルドブートキャンプで行うチーム開発プラクティス(正式には、開発に参加してPRを送りマージする)にて、<a href='https://github.com/fjordllc/bootcamp'>リポジトリ</a>に所属するContributorのcommit数を集計し、ランキングを表示するサイトです。</p>
-            <h3 className='modal_sub-title'>このサイトの使い方</h3>
-            <ul>
-              <li className='modal_sentence'>就職活動にて、企業様に自身がフィヨルドブートキャンプのチーム開発で書いたコード一覧を提出できます。</li>
-              <li className='modal_sentence'>フィヨルドブートキャンプ内で他の人がどのようなコミットを行ったか、どのくらいのコミット(貢献)を行ったがわかります。</li>
-            </ul>
-            <h3 className='modal_sub-title'>ランキング更新タイミング</h3>
-            <p className='modal_sentence'>毎日 0時 6時 12時 18時 の4回、ランキングを更新します。</p>
-            <h3 className='modal_sub-title'>操作について</h3>
-            <p className='modal_sentence'>各Contributorのnameをクリックすると、そのContributorが実施したコミット一覧を表示します。</p>
-            <p className='modal_sentence'>検索ボックスにContributorのnameを入力することで、Contirbutorの検索もできます。</p>
-            <h3 className='modal_sub-title'>作者について</h3>
-            <p className='modal_author-name'>rosh-1228</p>
-            <ul className='modal_outer_links'>
-              <li className='modal_outer_link'><a href='https://github.com/rosh-1228/fjord-boot-camp-contributors'><img src='/assets/GitHub-Mark-120px-plus.png' width="30" height="30" /></a></li>
-              <li className='modal_outer_link'><a href='https://twitter.com/rosh_1228'><img src='/assets/Twittersocialicons.png' width="30" height="30" /></a></li>
-              <li className='modal_outer_link'><a href='https://rosh-1228.hatenablog.com/'><img src='/assets/hatenablog-logo.svg' width="30" height="30" /></a></li>
+          <div className='modal-content'>
+            <h2 className='modal-content__title'>bootcamp の Commit ランキングサイト</h2>
+            <p>FBC Contributors は、<a href='https://github.com/fjordllc/bootcamp' target='_blank' rel='noopener'>bootcamp repository</a> の Main Branch に Merge された Commit 数を集計し、ランキング表示をします。</p>
+            <p>
+              就職活動の際、自身が行った Commit 一覧を企業に提出するとき、
+              他の人がどんな Commit を行ったか、どれくらい Commit を確認したいときに便利です。
+            </p>
+            <h3 className='modal-content__sub-title'>ランキング更新タイミング</h3>
+            <p>毎日 0 時、6 時、12 時、18 時の 4 回ランキングを更新します。</p>
+            <h3 className='modal-content__sub-title'>操作方法</h3>
+            <p>
+              タブからランキングの期間を選択できます。
+              <br />
+              Contributor 名をクリックすると、その Contributor が行った Commit 一覧ページに遷移します。
+              <br />
+              検索ボックスから、Contirbutor の検索もできます。
+            </p>
+            <h3 className='modal-content__sub-title'>作者について</h3>
+            <p>rosh-1228</p>
+            <ul className='inline-list'>
+              <li className='inline-list__item'>
+                <a href='https://github.com/rosh-1228/fjord-boot-camp-contributors' target='_blank' rel='noopener'>
+                  <i className='fa-brands fa-github'></i>
+                </a>
+              </li>
+              <li className='inline-list__item'>
+                <a href='https://twitter.com/rosh_1228' target='_blank' rel='noopener'>
+                  <i className='fa-brands fa-twitter'></i>
+                </a>
+              </li>
+              <li className='inline-list__item'>
+                <a href='https://rosh-1228.hatenablog.com/' target='_blank' rel='noopener'>
+                  <img src='/assets/hatenablog-logo.svg' alt='はてなブログロゴマーク' />
+                </a>
+              </li>
             </ul>
           </div>
         </Modal>
-      </div>
+      </>
     )
   }
 }

@@ -19,7 +19,7 @@ class Contributors::SearchController < ApplicationController
   end
 
   def change_nil_avatar_to_default_img(avatar)
-    avatar = '/assets/kkrn_icon_user_9.svg' if avatar.nil?
+    avatar = '/assets/blank.svg' if avatar.nil?
     avatar
   end
 end

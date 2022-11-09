@@ -1,0 +1,128 @@
+.header
+  background-color: $main
+
+.header__inner
+  height: 3.5rem
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+.header__start
+  @media screen and (max-width: 767px)
+    display: flex
+    align-items: center
+  .header__nav-item-link.is-about
+    @media screen and (min-width: 768px)
+      display: none
+
+.header__about-link
+  color: $reversal-text
+  padding: 1rem
+  transform: translateY(-1rem)
+
+.header__logo-link
+  color: $reversal-text
+  text-decoration: none
+  display: flex
+  @media screen and (min-width: 768px)
+    gap: .625rem
+  @media screen and (max-width: 767px)
+    gap: .5rem
+
+.header__logo-image
+  @media screen and (min-width: 768px)
+    width: 2em
+  @media screen and (max-width: 767px)
+    width: 1.75em
+
+.header__logo-type
+  font-family: 'Fredoka One', sans-serif
+  @media screen and (min-width: 768px)
+    font-size: 1.75rem
+  @media screen and (max-width: 767px)
+    font-size: 1.25rem
+
+.header__drawer-open
+  @media screen and (min-width: 768px)
+    display: none
+  @media screen and (max-width: 767px)
+    display: flex
+    margin-right: -1rem
+    width: 2.75rem
+    height: 2.75rem
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    &::before,
+    &::after,
+    .header__drawer-open-icon
+      content: ''
+      display: block
+      width: 1.5rem
+      height: 1px
+      background-color: $reversal-text
+
+.header__drawer-open-icon
+  margin: .3125rem 0
+
+.header__nav
+  @media screen and (min-width: 768px)
+    display: block
+  @media screen and (max-width: 767px)
+    display: none
+    input:checked + label + &
+      display: block
+
+.header__nav-items
+  @media screen and (min-width: 768px)
+    display: flex
+    align-items: center
+    gap: 1rem
+  @media screen and (max-width: 767px)
+    background-color: $base
+    display: block
+    position: fixed
+    left: 0
+    bottom: 0
+    top: 0
+    width: 80vw
+    max-width: calc(100vw - 4rem)
+    z-index: 11
+
+.header__nav-item
+  &.is-about
+    @media screen and (max-width: 767px)
+      display: none
+
+
+.header__nav-item-link
+  text-decoration: none
+  cursor: pointer
+  @media screen and (min-width: 768px)
+    font-size: .875rem
+    color: $reversal-text
+  @media screen and (max-width: 767px)
+    font-size: 1rem
+    color: $main
+    min-height: 3rem
+    display: flex
+    align-items: center
+    padding: .5rem 1rem
+    border-bottom: solid 1px $border-tint
+  &:hover
+    text-decoration: underline
+
+.header__nav-overlay
+  @media screen and (min-width: 768px)
+    display: none
+  @media screen and (max-width: 767px)
+    display: block
+    position: fixed
+    left: 0
+    bottom: 0
+    top: 0
+    bottom: 0
+    width: 100vw
+    height: 100vh
+    z-index: 10
+    background-color: rgba(black, .8)
