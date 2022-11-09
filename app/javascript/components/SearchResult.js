@@ -18,47 +18,60 @@ class SearchResult extends React.Component {
   }
 }
 
-const Contributors = (props) => { 
+const Contributors = (props) => {
   return (
-    <div>
-      <table className="search-result-contributor_table">
-        <thead className='table_head'>
-          <tr className='table_header_row'>
-            <th className='table_header_name'>
-              <p className='table_data_contributor-name'>Name</p>
-            </th>
-            <th className='table_header_commits'>Commits</th>
-          </tr>
-        </thead>
-        <tbody className='table_body'>
-          {props.contributors.map((contributor) =>
-            <ContributorInfo contributor={contributor} key={contributor.id} /> )}
-        </tbody>
-      </table>
+    <div className="contributors">
+      <div className="contributors__body">
+        <div className="container">
+          <div className="contributors__body-inner">
+            <table className="contributors__list">
+              <thead>
+                <tr>
+                  <th className="contributors__label is-name">Showing {props.contributors.length} people</th>
+                  <th className="contributors__label is-commits">Commits</th></tr>
+              </thead>
+              <tbody>
+                {props.contributors.map((contributor) =>
+                  <ContributorInfo contributor={contributor} key={contributor.id} topCommits={props.contributors[0].commits} /> )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
 
 Contributors.propTypes = {
-  contributor: PropTypes.array.isRequired
+  contributors: PropTypes.array.isRequired
 }
 
-const  ContributorInfo = (props) => {
+const ContributorInfo = (props) => {
   const {avatar_url, path, name, commits} = props.contributor
 
   return (
-    <tr className="contributor_result_table-row">
-      <td className='table_data_info' >
-        <div className='contributor_result_info'>
-          <img className='contributor_result_avatar' src={avatar_url} />
-          <a className='contributor_result_name' href={path}>  {name}  </a>
+    <tr className='contributors-contributor'>
+      <td>
+        <div className='contributors-contributor__metas'>
+          <div className='contributors-contributor__avatar'>
+            <img className='contributors-contributor__avatar-image' src={avatar_url} />
+          </div>
+          <div className='contributors-contributor__attributes'>
+            <h2 className='contributors-contributor__name'>
+              <a className='contributors-contributor__name-link' href={path}>{name}</a>
+            </h2>
+          </div>
         </div>
       </td>
-      <td className='table_data_commits'>
-        <p className='contributor_result_commits'>{commits}</p>
+      <td className='contributors-contributor__activity'>
+        <p className='contributors-contributor__commit-count'>{commits}</p>
       </td>
     </tr>
   )
+}
+
+ContributorInfo.propTypes = {
+  contributor: PropTypes.object.isRequired
 }
 
 ContributorInfo.propTypes = {
