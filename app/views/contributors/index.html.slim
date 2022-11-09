@@ -1,7 +1,10 @@
-.period_title
-  - if params[:period].nil?
-    = 'Contributors - This month'
-  - else
-    = "Contributors - #{params[:period].capitalize.tr('-', ' ')}"
-.contributors-list
+header.main__header
+  .container
+    .main__header-inner
+      h1.main__title
+        - if params[:period].nil?
+          = 'Contributors - This month'
+        - else
+          = "Contributors - #{params[:period].capitalize.tr('-', ' ')}"
+.main__body
   = react_component('ContributorList', { ranks: @commit_ranks })

@@ -1,0 +1,21 @@
+.scroll-nav
+  position: fixed
+  @media screen and (min-width: 929px)
+    bottom: 2rem
+    right: 2rem
+  @media screen and (max-width: 928px)
+    bottom: 4rem
+    right: .5rem
+
+.scroll-nav__item-link
+  display: flex
+  height: 2rem
+  width: 2rem
+  justify-content: center
+  align-items: center
+  text-decoration: none
+  background-color: rgba(black, .2)
+  .scroll-nav__item:first-child &
+    border-radius: 1rem 1rem 0 0
+  .scroll-nav__item:last-child &
+    border-radius: 0 0 1rem 1rem

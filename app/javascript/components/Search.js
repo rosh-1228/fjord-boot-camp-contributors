@@ -16,11 +16,14 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div>
-        <form className="search_contributor">
-          <div className="search_field">
+      <div className="search-contributor">
+        <form className="search-contributor__inner">
+          <div className="search-contributor__field">
+            <label className="search-contributor__label">
+              Search<br />Contributer
+            </label>
             <input
-              className="search"
+              className="search-contributor__input-text"
               type="text"
               value={this.state.name}
               name="name"
@@ -33,16 +36,17 @@ class Search extends React.Component {
                   }
                 }
               }
-              placeholder="ユーザー名を入力して検索"
+              placeholder="rosh-1228"
             />
           </div>
-          <div className='serach_button'>
-            <input
-              className='button'
+          <div className='search-contributor__action'>
+            <button
+              className='search-contributor__action-submit'
               type="button"
               onClick={() => this.searchNameurl()}
-              value="検索"
-            />
+            >
+              <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+            </button>
           </div>
         </form>
       </div>

@@ -1,0 +1,55 @@
+.commits__table-wrapper
+  overflow-x: auto
+
+.commits__list
+  width: 70rem
+  max-width: 100%
+  margin: 0 auto
+  @media screen and (min-width: 768px)
+    font-size: .8125rem
+  @media screen and (max-width: 767px)
+    font-size: .75rem
+  thead
+    background-color: $background
+  tbody
+    background-color: $base
+  td
+    border: solid 1px $border
+    @media screen and (min-width: 768px)
+      padding: .75rem
+    @media screen and (max-width: 767px)
+      padding: .5rem
+  tr
+    &:nth-child(even)
+      background-color: #fafafa
+
+.commits__label
+  font-size: .75rem
+  &.is-hash
+    width: 4.5rem
+  &.is-date
+    width: 6rem
+
+.commits-commit__hash
+  font-family: 'Fredoka One', sans-serif
+
+.commits-commit__hash-link
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+
+.commits-commit__message
+  line-height: 1.6
+  @media screen and (min-width: 768px)
+    font-size: .8125rem
+  @media screen and (max-width: 767px)
+    font-size: .75rem
+
+.commits-commit__message-link
+  text-decoration: none
+  color: $text
+  word-break: break-all
+  overflow-wrap: break-word
+  &:hover
+    text-decoration: underline
+    color: $main

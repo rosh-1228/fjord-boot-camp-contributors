@@ -40,15 +40,15 @@ RSpec.describe 'ContributorTests', type: :system do
     end
   end
 
-  describe 'verify ', js: true do
+  describe 'verify search results', js: true do
     before do
       create(:contributor1)
     end
 
-    it '', js: true do
+    it 'enter search characters and verify results', js: true do
       visit '/'
       find('input[type="text"]').set('rosh-1228')
-      click_button '検索'
+      find('body > nav.global-nav > div > div > div.global-nav__end > div > div > div > form > div.search-contributor__action > button').click
 
       search_result_table = page.find('table').all('tr').map { |row| row.all('th, td').map { |cell| cell.text.strip } }
       search_result_table.shift

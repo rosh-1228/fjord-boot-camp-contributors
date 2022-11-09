@@ -1,0 +1,25 @@
+header.header
+  .container
+    .header__inner
+      .header__start
+        .header__logo
+          = link_to contributors_path, class: 'header__logo-link' do
+            = image_tag('pijord.svg', alt: 'フィヨルドブートキャンプのマーク', class: 'header__logo-image')
+            .header__logo-type
+              | FBC Contributors
+        = react_component('Description')
+      .header__end
+        input#drawer-input.is-hidden-checkbox(type='checkbox')
+        label.header__drawer-open(for='drawer-input')
+          span.header__drawer-open-icon
+        nav.header__nav
+          .header__nav-items
+            .header__nav-item.is-about
+              = react_component('Description')
+            .header__nav-item
+              = link_to 'https://bootcamp.fjord.jp/', target: '_blank', rel: 'noopener', class: 'header__nav-item-link' do
+                | FjordBootCamp
+            .header__nav-item
+              = link_to 'https://github.com/fjordllc/bootcamp', target: '_blank', rel: 'noopener', class: 'header__nav-item-link' do
+                | Contribution on Github
+          label.header__nav-overlay(for='drawer-input')

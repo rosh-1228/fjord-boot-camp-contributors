@@ -1,0 +1,30 @@
+.tabs__items
+  display: flex
+  align-items: center
+  transform: translateY(1px)
+
+.tabs__item
+  margin-right: .25rem
+
+.tabs__item-link
+  display: flex
+  align-items: center
+  justify-content: center
+  text-align: center
+  height: 2.75rem
+  border: solid 1px $header__border
+  text-decoration: none
+  color: $text
+  font-size: .875rem
+  border-radius: .25rem .25rem 0 0
+  background-color: $header__shade
+  color: $header__muted
+  @media screen and (min-width: 768px)
+    width: 8rem
+  @media screen and (max-width: 767px)
+    width: 7rem
+  &:hover
+    background-color: #3c308e
+  &.is-active
+    color: $main
+    background-color: $background
