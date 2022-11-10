@@ -9,7 +9,9 @@ class CommitsController < ApplicationController
   private
 
   def set_contributor
-    Contributor.find_by(name: params[:contributor_name])
+    contributor = Contributor.find_by(name: params[:contributor_name])
+    contributor.avatar_url = '/assets/blank.svg' if contributor.avatar_url.nil?
+    contributor
   end
 
   def search_comments(contributor)

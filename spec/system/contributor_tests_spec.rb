@@ -53,7 +53,19 @@ RSpec.describe 'ContributorTests', type: :system do
       search_result_table = page.find('table').all('tr').map { |row| row.all('th, td').map { |cell| cell.text.strip } }
       search_result_table.shift
 
-      expect(search_result_table.flatten[0]).to eq('rosh-1228')
+      expect(search_result_table.flatten[0]).to have_content 'rosh-1228'
+    end
+  end
+
+  describe 'verify nil avatar commits', js: true do
+    before do
+      create('contributor4')
+    end
+
+    it 'verify show nil avatar commits' do
+      visit '/contributors/rosh-1234/commits'
+
+      expect(page).to have_selector("img[src$='/assets/blank.svg']")
     end
   end
 end
