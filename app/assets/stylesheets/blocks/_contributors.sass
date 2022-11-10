@@ -1,7 +1,16 @@
 .contributors__list
-  width: 70rem
-  max-width: 100%
+  width: 100%
   margin: 0 auto
+  table-layout: fixed
+  @media screen and (min-width: 1184px)
+    max-width: 70rem
+  @media screen and (min-width: 768px)
+    font-size: .8125rem
+  @media screen and (max-width: 767px)
+    font-size: .75rem
+  &.is-search-result
+    @media screen and (min-width: 1184px)
+      max-width: 40rem
   thead
     background-color: $background
   tbody
@@ -21,4 +30,8 @@
   &.is-rank
     width: 3rem
   &.is-name
-    width: 15rem
+    @media screen and (min-width: 768px)
+      width: 15rem
+  &.is-commits
+    @media screen and (max-width: 767px)
+      width: 3.5rem

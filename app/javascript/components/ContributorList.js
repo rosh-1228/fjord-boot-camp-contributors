@@ -23,12 +23,12 @@ const Contributors = (props) => {
     <div className="contributors">
       <div className="contributors__body">
         <div className="container">
-          <div className="contributors__body-inner">
+          <div className="contributors__body-inner is-table-container">
             <table className="contributors__list">
               <thead>
                 <tr>
                   <th className="contributors__label is-rank">Rank</th>
-                  <th className="contributors__label is-name">Showing {props.ranks.length} people</th>
+                  <th className="contributors__label is-name">Showing {props.ranks.length} contributors</th>
                   <th className="contributors__label is-commits">Commits</th></tr>
               </thead>
               <tbody>
@@ -70,7 +70,7 @@ const ContributorInfo = (props) => {
         </div>
       </td>
       <td className='contributors-contributor__activity'>
-        <p className='contributors-contributor__commit-count'>{commits}</p>
+        <p className='contributors-contributor__commit-count is-nowrap'>{commits}</p>
         <div className="contributors-contributor__activity-graph" style={width}>
         </div>
       </td>

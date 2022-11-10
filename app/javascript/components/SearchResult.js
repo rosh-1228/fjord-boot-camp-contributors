@@ -7,7 +7,7 @@ class SearchResult extends React.Component {
     this.state = {initialContributors: this.props.contributors, contributors:[]}
   }
 
-  componentDidMount() { 
+  componentDidMount() {
     this.setState({contributors: this.state.initialContributors})
   }
 
@@ -23,12 +23,12 @@ const Contributors = (props) => {
     <div className="contributors">
       <div className="contributors__body">
         <div className="container">
-          <div className="contributors__body-inner">
-            <table className="contributors__list">
+          <div className="contributors__body-inner is-table-container">
+            <table className="contributors__list is-search-result">
               <thead>
                 <tr>
-                  <th className="contributors__label is-name">Showing {props.contributors.length} people</th>
-                  <th className="contributors__label is-commits">Commits</th></tr>
+                  <th className="contributors__label is-name">Showing {props.contributors.length} Contributors</th>
+                </tr>
               </thead>
               <tbody>
                 {props.contributors.map((contributor) =>
@@ -50,21 +50,21 @@ const ContributorInfo = (props) => {
   const {avatar_url, path, name, commits} = props.contributor
 
   return (
-    <tr className='contributors-contributor'>
+    <tr className='found-contributors-contributor'>
       <td>
-        <div className='contributors-contributor__metas'>
-          <div className='contributors-contributor__avatar'>
-            <img className='contributors-contributor__avatar-image' src={avatar_url} />
+        <div className='found-contributors-contributor__metas'>
+          <div className='found-contributors-contributor__avatar'>
+            <img className='found-contributors-contributor__avatar-image' src={avatar_url} />
           </div>
-          <div className='contributors-contributor__attributes'>
-            <h2 className='contributors-contributor__name'>
-              <a className='contributors-contributor__name-link' href={path}>{name}</a>
+          <div className='found-contributors-contributor__attributes'>
+            <h2 className='found-contributors-contributor__title'>
+              <a className='found-contributors-contributor__title-link' href={path}>
+                <span className='found-contributors-contributor__title-name'>{name}</span>
+                <span className='found-contributors-contributor__title-commits'>{commits} commits</span>
+              </a>
             </h2>
           </div>
         </div>
-      </td>
-      <td className='contributors-contributor__activity'>
-        <p className='contributors-contributor__commit-count'>{commits}</p>
       </td>
     </tr>
   )

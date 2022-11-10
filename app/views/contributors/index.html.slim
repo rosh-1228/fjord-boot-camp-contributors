@@ -8,6 +8,11 @@ header.main__header
           = "Contributors - #{params[:period].capitalize.tr('-', ' ')}"
 .main__body
   - if @commit_ranks.blank?
-    | Today has no commit.
+    .main-empty
+      .container
+        .main-empty__inner
+          i.far.fa-sad-tear
+          p.main-empty__message
+            | Today has no commit.
   - else
     = react_component('ContributorList', { ranks: @commit_ranks })
