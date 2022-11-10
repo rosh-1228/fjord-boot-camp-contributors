@@ -53,7 +53,7 @@ RSpec.describe 'ContributorTests', type: :system do
       search_result_table = page.find('table').all('tr').map { |row| row.all('th, td').map { |cell| cell.text.strip } }
       search_result_table.shift
 
-      expect(search_result_table.flatten[0]).to eq('rosh-122830 commits')
+      expect(search_result_table.flatten[0]).to have_content 'rosh-1228'
     end
   end
 
