@@ -39,4 +39,17 @@ FactoryBot.define do
     this_year_commits { 15 }
     all_time_commits { 20 }
   end
+
+  factory :contributor4, class: Contributor do
+    id { 4 }
+    name { 'rosh-1234' }
+    avatar_url { nil }
+    first_committed_on { '2021-03-19' }
+    rank { 4 }
+    today_commits { 0 }
+    this_week_commits { 1 }
+    this_month_commits { 2 }
+    this_year_commits { 3 }
+    all_time_commits { 5 }
+  end
 end
