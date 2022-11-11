@@ -1,10 +1,4 @@
-# This workflow uses actions that are not certified by GitHub.  They are
-# provided by a third-party and are governed by separate terms of service,
-# privacy policy, and support documentation.
-#
-# This workflow will install a prebuilt Ruby version, install dependencies, and
-# run tests and linters.
-name: "Ruby on Rails CI"
+name: "cron job"
 on:
   schedule:
     - cron:  '5 * * * *'
@@ -14,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      PROJECT_ID: ${{ secrets.PROJECT_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -36,6 +31,7 @@ jobs:
         run: npm i -g @railway/cli
       - name: railway login
         run: railway login
+      - name: railway project select
+        run: railway link PROJECT_ID
       - name: run batch
         run: RAILWAY_TOKEN=TOKEN railway run bundle exec rails runner lib/batch/contributor_commit_collector.rb
-      
