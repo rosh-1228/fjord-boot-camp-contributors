@@ -6,9 +6,6 @@ jobs:
   build:
     name: build
     runs-on: ubuntu-latest
-    env:
-      TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-      PROJECT_ID: ${{ secrets.PROJECT_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -34,11 +31,6 @@ jobs:
         run: npm install
       - name: Install packages
         run: yarn install --frozen-lockfile
-      - name: install railway cli
-        run: npm i -g @railway/cli
-      - name: railway login
-        run: railway login --browserless
-      - name: railway select project
-        run: railway link acc69644-bd37-4c7a-a272-b62cf6e16544
       - name: run batch
-        run: RAILWAY_TOKEN=TOKEN railway run bundle exec rails runner lib/batch/contributor_commit_collector.rb
+        run: railway run bundle exec rails runner lib/batch/contributor_commit_collector.rb
+          env: ${{ secrets.RAILWAY_TOKEN }}
