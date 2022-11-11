@@ -36,7 +36,5 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: install railway cli
         run: npm i -g @railway/cli
-      - name: railway project select
-        run: railway link PROJECT_ID
       - name: run batch
         run: RAILWAY_TOKEN=TOKEN railway run bundle exec rails runner lib/batch/contributor_commit_collector.rb
