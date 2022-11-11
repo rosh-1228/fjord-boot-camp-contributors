@@ -1,7 +1,7 @@
 name: "cron job"
 on:
   schedule:
-    - cron:  '5 * * * *'
+    - cron:  '10 * * * *'
 jobs:
   build:
     name: build
@@ -33,4 +33,5 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: run batch
         run: railway run bundle exec rails runner lib/batch/contributor_commit_collector.rb
-          env: ${{ secrets.RAILWAY_TOKEN }}
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
