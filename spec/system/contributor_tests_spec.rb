@@ -26,7 +26,7 @@ RSpec.describe 'ContributorTests', type: :system do
   describe 'verify show commit table', js: true do
     it 'verify show commit message', js: true do
       create(:contributor1)
-      commits = [['hashhash1', '2021-01-01', 'commit test message', 1], ['hashhash2', '2022-01-01', 'commit test message2', 1]]
+      commits = [['hashhash1', '2021-02-01', 'commit test message', 1], ['hashhash2', '2022-01-01', 'commit test message2', 1]]
       Commit.import %i[hash committed_on message contributor_id], commits
       commit = Commit.find_by(contributor_id: Contributor.find(1).id)
       visit contributor_commits_path(Contributor.find(commit.contributor_id).name)
