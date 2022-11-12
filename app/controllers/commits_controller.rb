@@ -3,7 +3,6 @@
 class CommitsController < ApplicationController
   def index
     @contributor = set_contributor
-    binding.pry
     @index = search_comments(@contributor)
   end
 
