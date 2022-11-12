@@ -3,6 +3,7 @@
 class CommitsController < ApplicationController
   def index
     @contributor = set_contributor
+    binding.pry
     @index = search_comments(@contributor)
   end
 
@@ -15,6 +16,6 @@ class CommitsController < ApplicationController
   end
 
   def search_comments(contributor)
-    Commit.where(contributor_id: contributor.id)
+    Commit.where(contributor_id: contributor.id).order(committed_on: :DESC)
   end
 end
