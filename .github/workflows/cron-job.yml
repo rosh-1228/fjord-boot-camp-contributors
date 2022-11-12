@@ -25,12 +25,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - name: Install packages
-        run: yarn install --frozen-lockfile
       - name: install npm
         run: npm install
       - name: Install packages
         run: yarn install --frozen-lockfile
+      - name: Install Railway
+        run: npm i -g @railway/cli
       - name: run batch
         run: railway run bundle exec rails runner lib/batch/contributor_commit_collector.rb
         env:
