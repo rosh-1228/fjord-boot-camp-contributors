@@ -15,6 +15,6 @@ class CommitsController < ApplicationController
   end
 
   def search_comments(contributor)
-    Commit.where(contributor_id: contributor.id)
+    Commit.where(contributor_id: contributor.id).order(committed_on: :DESC)
   end
 end
