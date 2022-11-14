@@ -3,14 +3,13 @@ Fjord Boot Camp CONTRIBUTORSは、フィヨルドブートキャンプで行う�
 
 ## 機能
 - contributorsランキング
-![FjordBotCamp_CONTRIBUTORS_This-month___FjordBotCamp_CONTRIBUTORS](https://user-images.githubusercontent.com/64620506/198900573-ef24df76-542b-4d2a-887e-c2ca45f153bb.png)
+![FjordBotCamp_CONTRIBUTORS_All-time___FjordBotCamp_CONTRIBUTORS_🔊](https://user-images.githubusercontent.com/64620506/201597942-cb7fd5cf-1aac-4c76-8662-02e89c2faae3.png)
 
 - commit一覧
-![FjordBotCamp_CONTRIBUTORS_This-month___FjordBotCamp_CONTRIBUTORS](https://user-images.githubusercontent.com/64620506/198900596-58dad150-f244-4cc7-86ec-10e1fcb80c8d.png)
+![FjordBotCamp_CONTRIBUTORS_This-month___FjordBotCamp_CONTRIBUTORS_🔊](https://user-images.githubusercontent.com/64620506/201598112-d0112af9-0de2-4ec0-979e-2c0e5193165f.png)
 
 - 検索
-![FjordBotCamp_CONTRIBUTORS_This-month___FjordBotCamp_CONTRIBUTORS](https://user-images.githubusercontent.com/64620506/198900611-9385bf1f-56c4-43c9-935d-1fbbb8f4ef90.png)
-
+![FjordBotCamp_CONTRIBUTORS_This-month___FjordBotCamp_CONTRIBUTORS_🔊](https://user-images.githubusercontent.com/64620506/201598053-0c811dd1-02d9-4b71-83e4-5b212cca6b56.png)
 
 ## 使用技術
 ### バックエンド
