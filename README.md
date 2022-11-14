@@ -19,10 +19,9 @@ Fjord Boot Camp CONTRIBUTORSは、フィヨルドブートキャンプで行う�
 - React
 ### インフラ
 - Railway
-### 外部連携サービス
-- New Relic
 ### 外部API連携
 - Github
+- Github actions
 
 0,6,12,18時の4回毎日Githubの[リポジトリ](https://github.com/fjordllc/bootcamp)からcontributorとcommitを取得しています。
 New Relicからwebサービスに対して、pingを実行することでトリガーとし、contributorとcommitを取得します。
@@ -31,13 +30,6 @@ New Relicからwebサービスに対して、pingを実行することでトリ�
 - clone
 ```
 git clone https://github.com/rosh-1228/fjord-boot-camp-contributors.git
-```
-## データの入れ方
-`Rails.application.credentials`を使用しているので、Master.keyが必要です。
-ご連絡いただければお渡しします。
-以下実行していただければ、ローカルにデータを投入できます。
-```
-bundle exec rails runner lib/batch/contributor_commit_collector.rb
 ```
 ## 起動
 ```
