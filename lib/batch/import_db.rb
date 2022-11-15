@@ -11,6 +11,7 @@ module ImportDB
   end
 
   def import_commits(commits)
+    commits = commits.uniq
     change_name_to_id(commits)
     all_commits_count = Commit.all.count
     repo_commits_count = commits.count
