@@ -1,5 +1,7 @@
-name: "cron job"
-on: workflow_call
+name: "manul cron job"
+
+on: [ workflow_dispatch ]
+
 jobs:
   build:
     name: build
