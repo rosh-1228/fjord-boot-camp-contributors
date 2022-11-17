@@ -39,9 +39,6 @@ def regist_db(collector)
 
   collector.import_contributor(contributors)
   collector.import_commits(commits)
-  p Commit.find(1)
-  p '----------'
-  p commits
 
   collector.update_commit_count_rank
   p "#{Time.now} end contributor and commit from github"
