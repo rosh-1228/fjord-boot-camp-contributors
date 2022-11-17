@@ -22,10 +22,11 @@ module ImportDB
       for_deleted_dupulicated_array << [commit.hash, commit.committed_on, commit.message, commit.contributor_id]
     end
     commits = commits - for_deleted_dupulicated_array if all_commits_count < repo_commits_count
-    p 'all_commits_count >= repo_commits_count'
-    p all_commits_count >= repo_commits_count
-    p 'commits'
-    p commits
+    p 'all_commits_count'
+    p all_commits_count
+    p 'repo_commits_count'
+    p repo_commits_count
+
     Commit.import %i[hash committed_on message contributor_id], commits unless all_commits_count >= repo_commits_count
   end
 
