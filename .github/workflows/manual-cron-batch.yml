@@ -31,6 +31,6 @@ jobs:
       - name: Install Railway
         run: npm i -g @railway/cli
       - name: run batch
-        run: railway run --service fjord-boot-camp-contributors bundle exec rails runner lib/batch/contributor_commit_collector.rb
+        run: railway run bundle exec rails runner lib/batch/contributor_commit_collector.rb
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
