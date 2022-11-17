@@ -20,6 +20,7 @@ Query = collector.create_query
 
 def regist_db(collector)
   p "#{Time.now} start contributor and commit from github"
+  p ActiveRecord::Base.connection_config
 
   graphql_cursol = nil
   contributors = []
