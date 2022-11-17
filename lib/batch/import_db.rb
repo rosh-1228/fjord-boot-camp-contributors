@@ -26,7 +26,11 @@ module ImportDB
     p all_commits_count
     p 'repo_commits_count'
     p repo_commits_count
-    ommits.shift(500)
+    p 'commits.count'
+    p commits.count
+    commits.shift(500)
+    p 'commits.count'
+    p commits.count
     Commit.import %i[hash committed_on message contributor_id], commits unless all_commits_count >= repo_commits_count
   end
 
