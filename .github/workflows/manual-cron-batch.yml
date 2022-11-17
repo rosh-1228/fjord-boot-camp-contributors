@@ -33,4 +33,4 @@ jobs:
       - name: run batch
         run: bundle exec rails db:migrate:reset
         env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          RAILWAY_TOKEN: ${{ secrets.RAILS_MASTER_KEY }}
