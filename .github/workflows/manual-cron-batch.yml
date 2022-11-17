@@ -6,6 +6,8 @@ jobs:
   build:
     name: build
     runs-on: ubuntu-latest
+    env:
+      RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -31,6 +33,6 @@ jobs:
       - name: Install Railway
         run: npm i -g @railway/cli
       - name: run batch
-        run: bundle exec rails db:migrate:reset
+        run: railway run bundle exec rails runner lib/batch/contributor_commit_collector.rb
         env:
-          RAILWAY_TOKEN: ${{ secrets.RAILS_MASTER_KEY }}
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
