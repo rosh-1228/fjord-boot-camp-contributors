@@ -16,17 +16,7 @@ module ImportDB
     all_commits_count = Commit.all.count
     repo_commits_count = commits.count
 
-    commits.shift(Commit.all.count) if all_commits_count < repo_commits_count
-    p all_commits_count
-    p repo_commits_count
-    p all_commits_count < repo_commits_count
-    p '@@@@@@@@@@@@@@'
-    p Commit.find(1)
-    p '----------'
-    p commits
-    p '||||||||||||||||||'
-    p all_commits_count >= repo_commits_count
-    
+    commits.shift(Commit.all.count) if all_commits_count < repo_commits_count    
     Commit.import %i[hash committed_on message contributor_id], commits unless all_commits_count >= repo_commits_count
   end
 
