@@ -6,7 +6,11 @@ module ImportDB
     all_contibutors_count = Contributor.all.count
     repo_contributors_count = contributors.count
 
-    contributors.shift(Contributor.all.count) if all_contibutors_count < repo_contributors_count
+    for_deleted_dupulicated_contributors_array = []
+    Contributor.all.each do |contributor|
+      for_deleted_dupulicated_contributors_array << [contributor.name, contributor.avatar_url]
+    end
+    contributors = contributors - for_deleted_dupulicated_contributors_array if all_contibutors_count < repo_contributors_count
     Contributor.import %i[name avatar_url], contributors unless all_contibutors_count >= repo_contributors_count
   end
 
