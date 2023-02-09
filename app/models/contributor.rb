@@ -11,4 +11,8 @@ class Contributor < ApplicationRecord
       'today' => 'Today',
       'all-time' => 'All time'
     }.freeze
+
+    def self.search_contributors(contributer_name)
+      where('name like ?', "%#{ActiveRecord::Base.sanitize_sql_like(contributer_name)}%")
+    end
 end

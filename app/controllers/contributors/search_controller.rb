@@ -3,7 +3,7 @@
 class Contributors::SearchController < ApplicationController
   def index
     @contributors = []
-    contributers = Contributor.where('name like ?', "%#{ActiveRecord::Base.sanitize_sql_like(params[:name])}%")
+    contributers = Contributor.search_contributors(params[:name])
     contributers.each do |contributor|
       @contributors << assign_contributor(contributor) unless contributor.nil?
     end
