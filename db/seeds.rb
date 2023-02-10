@@ -11,7 +11,7 @@ commits = []
 rank = UpdatedRank.new
 
 30.times do |name_number|
-  contributors << ["contributor#{name_number}", "/assets/blank.svg"]
+  contributors << ["contributor#{name_number}", '/assets/blank.svg']
 end
 Contributor.import %i[name avatar_url], contributors
 

@@ -3,7 +3,7 @@
 class Commit < ApplicationRecord
   belongs_to :contributor
 
-  def self.set_contributor(contributor_name)
+  def self.find_contributor(contributor_name)
     contributor = Contributor.find_by(name: contributor_name)
     contributor.avatar_url = '/assets/blank.svg' if contributor.avatar_url.nil?
     contributor

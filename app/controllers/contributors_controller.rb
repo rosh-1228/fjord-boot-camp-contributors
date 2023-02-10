@@ -2,6 +2,6 @@
 
 class ContributorsController < ApplicationController
   def index
-    @commit_ranks = Contributor.rank(@commit_ranks, params[:period])
+    @commit_ranks = Contributor.rank(params[:period])
   end
 end
