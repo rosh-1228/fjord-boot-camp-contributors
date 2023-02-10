@@ -18,17 +18,17 @@ class Contributor < ApplicationRecord
       include Rails.application.routes.url_helpers
     end
 
-    def self.avataraaaa
-      @commit_ranks = []
+    def self.rank(commit_ranks, period)
+      commit_ranks = []
 
-      collect_contributors(@commit_ranks)
-      commit_count = @commit_ranks.map { |hash| hash[:commits] }
+      collect_contributors(commit_ranks, period)
+      commit_count = commit_ranks.map { |hash| hash[:commits] }
       if commit_count
         commit_counts_sort_reverse = commit_count.sort.reverse
         commit_count.map! { |commit_number| commit_counts_sort_reverse.index(commit_number) + 1 }
-        @commit_ranks.zip(commit_count) { |contributor, rank| contributor[:rank] = rank }
+        commit_ranks.zip(commit_count) { |contributor, rank| contributor[:rank] = rank }
       end
-      @commit_ranks.sort_by! { |hash| hash[:rank] }
+      commit_ranks.sort_by! { |hash| hash[:rank] }
     end
 
     def self.search_contributors(contributer_name)
