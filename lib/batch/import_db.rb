@@ -10,7 +10,7 @@ module ImportDB
     Contributor.all.each do |contributor|
       for_deleted_dupulicated_contributors_array << [contributor.name, contributor.avatar_url]
     end
-    contributors -= for_deleted_dupulicated_contributors_array if all_contibutors_count < repo_contributors_count
+    contributors = contributors - for_deleted_dupulicated_contributors_array if all_contibutors_count < repo_contributors_count
     Contributor.import %i[name avatar_url], contributors unless all_contibutors_count >= repo_contributors_count
   end
 
@@ -24,7 +24,7 @@ module ImportDB
     Commit.all.each do |commit|
       for_deleted_dupulicated_array << [commit.hash, commit.committed_on, commit.message, commit.contributor_id]
     end
-    commits -= for_deleted_dupulicated_array if all_commits_count < repo_commits_count
+    commits = commits - for_deleted_dupulicated_array if all_commits_count < repo_commits_count
 
     Commit.import %i[hash committed_on message contributor_id], commits unless all_commits_count >= repo_commits_count
   end
