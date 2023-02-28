@@ -13,7 +13,7 @@ gem 'sass-rails', '>= 6'
 # gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 
-# not default
+# not default gem
 gem 'activerecord-import'
 gem 'graphql'
 gem 'graphql-client'
